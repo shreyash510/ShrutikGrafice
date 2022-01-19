@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
-import DesignList from '../BannerTypes/DesignList'
+import CardStyle from '../items/CardStyle'
 import axios from 'axios';
 import DesignCategoriesTag from './DesignCategoriesTag'
 
-export default function Design() {
+export default function Templates() {
     const [database, setDatabase] = useState([]);
 
     const dbData = async () => {
@@ -29,7 +29,7 @@ export default function Design() {
             <div className="flex flex-wrap justify-center">
                 {
                     database.map((v) => {
-                        return <DesignList
+                        return <CardStyle
                             key={v._id}
                             id={v._id}
                             img={v.img}

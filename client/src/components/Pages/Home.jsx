@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import DesignList from '../BannerTypes/DesignList';
-import HomeDemo from '../BannerTypes/HomeDemo';
+import CardStyle from '../items/CardStyle';
+import HomeDemo from '../items/HomeDemo';
 import axios from 'axios';
 
 export default function Home() {
@@ -21,11 +21,15 @@ export default function Home() {
 
     return (
         <>
-            <HomeDemo />
+
+            <div className="container">
+                <HomeDemo />
+                <p className='text-4xl py-4 font-bold'>Popular Templates</p>
+            </div>
             <div className="flex flex-wrap justify-center">
                 {
                     database.map((v) => {
-                        return <DesignList
+                        return <CardStyle
                             key={v._id}
                             id={v._id}
                             img={v.img}

@@ -1,8 +1,10 @@
 import React, { useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import axios from 'axios'
+import ('../styling/register.css')
 
-const SignIn = () => {
+
+const Register = () => {
     const [info, setInfo] = useState({});
 
     const inputEvent = (e) => {
@@ -25,32 +27,32 @@ const SignIn = () => {
                 .then(res => alert(res.data.message))
                 .catch(e => console.log(e))
         } else {
-            alert('invalid password plz enter same password')
+            alert(`Your password and Current Passsword Doesn't match`)
         }
 
     }
     return (
         <>
-            <div className="container my-5 p-4 rounded-2xl border-2 shadow-sm my-5 w-68">
+            <div className="register container my-5 p-4 rounded-2xl border-2 shadow-sm my-5 ">
                 <form method='POST' className="row g-3">
                     <div className="col-md-5">
-                        <label className="form-label">Your Name</label>
+                        <label className="form-label"> Name</label>
                         <input type="text" className="form-control" name="name" onChange={inputEvent} placeholder='Enter Name...' />
                     </div>
                     <div className="col-md-7">
-                        <label className="form-label">Your email</label>
+                        <label className="form-label"> email</label>
                         <input type="email" className="form-control" name="email" onChange={inputEvent} placeholder='Enter email...' />
                     </div>
                     <div className="col-md-7">
-                        <label className="form-label">Your Phone</label>
+                        <label className="form-label">Mobile</label>
                         <input type="text" className="form-control" name="phone" onChange={inputEvent} placeholder='Enter phone no...' />
                     </div>
                     <div className="col-md-5">
-                        <label className="form-label">Your Profesion</label>
+                        <label className="form-label">State</label>
                         <input type="text" className="form-control" name="profession" onChange={inputEvent} placeholder='Enter Profesion...' />
                     </div>
                     <div className="col-md-6">
-                        <label className="form-label">Your Password</label>
+                        <label className="form-label"> Password</label>
                         <input type="password" className="form-control" name="pass" onChange={inputEvent} placeholder='Enter password...' />
                     </div>
                     <div className="col-md-6">
@@ -67,4 +69,4 @@ const SignIn = () => {
     )
 }
 
-export default SignIn;
+export default Register;

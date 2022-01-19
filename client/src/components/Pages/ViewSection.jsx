@@ -26,16 +26,14 @@ const ViewSection = () => {
     console.log(pdata.title)
     return (
         <>
-            <div className="container flex flex-col justify-center">
-                <div className=" my-5 justify-around shadow-xl rounded-3xl w-[90%] p-5 flex flex-wrap">
-                    <div className="left-side w-50">
-                        <div className="img w-[70%] h-auto flex flex-col">
-                            <img className='rounded-2xl' src={pdata.img} alt="BannerImage" />
-                        </div>
+            <div style={{ width: '100%' }} className="container my-5">
+                <div className="container row g-3 flex justify-center items-center">
+                    <div className="col-md-5">
+                        <img className='rounded-2xl w-[25em]' src={pdata.img} alt="BannerImage" />
                     </div>
-                    <div className="right-side w-50 px-4">
-                        <h1 className="title font-bold text-5xl px-4 text-center">{pdata.title}</h1>
-                        <p className='font-bold text-3xl text-center my-4'>Price: {pdata.price}/-</p>
+                    <div className="col-md-5">
+                        <p className='py-3 text-3xl text-center'>{pdata.title}</p>
+                        <p className='pb-3 font-medium font-bold text-3xl text-center '>Price :{pdata.price}/-</p>
                         <p className='text-center'>? Numquam, consequatur. Ab et possimus voluptatem incidunt rem nostrum molestiae modi, ad corrupti amet repellat odit ipsam est itaque deserunt distinctio obcaecati architecto in ea velit rerum iusto alias! Incidunt, pariatur!</p>
                         <div className="btn flex justify-around">
                             <button className="btn btn-primary py-2 my-3 mx-1">Add To Cart</button>
@@ -43,9 +41,9 @@ const ViewSection = () => {
                         </div>
                     </div>
                 </div>
-                <div className="container">
-                    <h1 className='font-bold text-3xl'>Related products</h1>
-                </div>
+            </div>
+            <div className="container">
+                <h1 className='font-bold text-3xl'>Related products</h1>
             </div>
         </>
     )

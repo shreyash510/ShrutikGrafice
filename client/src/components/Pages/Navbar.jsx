@@ -1,7 +1,8 @@
 import React from 'react'
-import {Link} from 'react-router-dom'
+import {Link, useNavigate} from 'react-router-dom'
 
 function Navbar() {
+    const navigate = useNavigate()
     return (
         <>
             <nav className="navbar navbar-expand-lg shadow navbar-light bg-light">
@@ -13,19 +14,19 @@ function Navbar() {
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul className="navbar-nav ms-auto pt-2">
                             <li className="nav-item">
-                                <Link to="/" className="nav-link px-3 active" aria-current="page">Home</Link>
+                                <Link to="/" style={{fontWeight: '600',fontSize:'15px'}} className="nav-link px-3 active" aria-current="page">Home</Link>
                             </li>
                             <li className="nav-item">
-                                <Link to="/templates" className="nav-link px-3">Templates</Link>
+                                <Link to="/templates" style={{fontWeight: '600',fontSize:'15px'}} className="nav-link px-3">Templates</Link>
                             </li>
                             <li className="nav-item">
-                                <Link to="/about" className="nav-link px-3">About</Link>
+                                <Link to="/about" style={{fontWeight: '600',fontSize:'15px'}} className="nav-link px-3">About</Link>
                             </li>
                             <li className="nav-item">
-                                <Link to="/contact" className="nav-link px-3">Contact</Link>
+                                <Link to="/contact" style={{fontWeight: '600',fontSize:'15px'}} className="nav-link px-3">Contact</Link>
                             </li>
                             <div style={{marginTop: '-7px'}} className="btn">
-                                <button className="btn btn-primary">Create Account</button>
+                                <button onClick={()=>{navigate('/register')}}  className="btn btn-primary">Create Account</button>
                             </div>
                         </ul>
                     </div>

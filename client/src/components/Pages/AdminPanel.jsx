@@ -1,10 +1,11 @@
 import React from 'react'
 
-export default function About() {
-
+function AdminPanel() {
     return (
         <>
-            <h1>About</h1>
+            
         </>
     )
 }
+
+export default AdminPanel;
