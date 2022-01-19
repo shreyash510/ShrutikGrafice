@@ -4,7 +4,11 @@ import { NavLink } from 'react-router-dom'
 
 
 const Login = () => {
-    const [info, setInfo] = useState({})
+    const [info, setInfo] = useState([])
+    const [color, setColor]=useState({borderColor:''});
+    const [msg, setMsg]=useState('');
+    const [msgColor, setMsgColor] = useState({color:'red',fontWeigth:'bold'})
+
     const inputEvent = (e) => {
         setInfo((preV) => {
             return {
@@ -19,25 +23,33 @@ const Login = () => {
         if (email && pass) {
             const url = 'http://localhost:8000/login';
             axios.post(url, info)
-                .then(res => alert(res.data.message))
+                .then((res)=>{
+                    const msgData = res.data.message;
+                    (msgData)? setMsg(res.data.message) || setMsgColor({color:'green',fontWeigth:'bold'}) ||  setColor({borderColor:'green'}) : setMsg(res.data.error) || setColor({borderColor:'red'});
+                })
                 .catch((e) => {
-                    alert('error found')
+                    // alert('error found')
+                    setColor({borderColor:'red'})
+                    setMsg('Error Found')
                 })
         } else {
-            alert('plese fill email or password')
+            setColor({borderColor:'red'})
+            setMsg('plese fill email or password')
+            setMsgColor({color:'red',fontWeigth:'bold'})
         }
     }
     return (
         <>
-            <div className="container my-5 p-4 rounded-2xl border-2 shadow-sm w-[25em]">
-                <form>
+            <div style={color} className="container my-5 p-4 rounded-2xl border-2 shadow-sm w-[25em]">
+                <p style={msgColor}>{msg}</p>
+                <form className='pt-3'>
                     <div className="mb-4">
                         <label className="form-label">Email address</label>
-                        <input type="email" onChange={inputEvent} name="email" placeholder='enter email' className="form-control" />
+                        <input style={color} type="email" onChange={inputEvent} id='' name="email" placeholder='enter email' className="form-control" required/>
                     </div>
                     <div className="mb-4">
                         <label className="form-label">Password</label>
-                        <input type="password" onChange={inputEvent} name="pass" placeholder='enter pass' className="form-control" />
+                        <input style={color} type="password" onChange={inputEvent} name="pass" placeholder='enter pass' className="form-control" required/>
                     </div>
                     <NavLink to="/SignIn" className='text-blue-700 text-center' >Create new account</NavLink><br />
 

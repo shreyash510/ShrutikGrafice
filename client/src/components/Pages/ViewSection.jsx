@@ -31,9 +31,9 @@ return (
                     <img className='rounded-2xl w-[25em]' src={pdata.img} alt="BannerImage" />
                 </div>
                 <div className="col-md-5">
-                    <p className='py-3 text-3xl text-center'>{pdata.title}</p>
-                    <p className='pb-3 font-medium font-bold text-3xl text-center '>Price :{pdata.price}/-</p>
-                    <p className='text-center'>? Numquam, consequatur. Ab et possimus voluptatem incidunt rem nostrum molestiae modi, ad corrupti amet repellat odit ipsam est itaque deserunt distinctio obcaecati architecto in ea velit rerum iusto alias! Incidunt, pariatur!</p>
+                    <p className='py-3 text-4xl text-center font-bold'>{pdata.title}</p>
+                    <p className='pb-3 font-medium font-bold text-3xl text-center'>Price :{pdata.price}/-</p>
+                    <p className='text-center font-medium'>? Numquam, consequatur. Ab et possimus voluptatem incidunt rem nostrum molestiae modi, ad corrupti amet repellat odit ipsam est itaque deserunt distinctio obcaecati architecto in ea velit rerum iusto alias! Incidunt, pariatur!</p>
                     <div className="btn flex justify-around">
                         <button className="btn btn-primary py-2 my-3 mx-1">Add To Cart</button>
                         <button className="btn btn-primary py-2 my-3 mx-1">Order Now</button>

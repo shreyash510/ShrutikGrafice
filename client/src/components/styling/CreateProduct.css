@@ -1,0 +1,6 @@
+@media (max-width:500px) {
+    .register{
+        position: relative;
+        top:6em;
+    }
+}

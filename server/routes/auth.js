@@ -15,6 +15,7 @@ router.get('/', (req, res) => {
 router.get('/about', (req, res) => {
     res.send("this is router about page")
 })
+
 // user register
 router.post('/register', async (req, res) => {
     // console.log(req.body)
@@ -24,7 +25,7 @@ router.post('/register', async (req, res) => {
     try {
         if (userExist) {
             return res.json({
-                message: 'user already exist'
+                error: 'user already exist'
             })
             // console.log('user already exist')
         } else {
@@ -63,11 +64,11 @@ router.post("/login", async (req, res) => {
             })
         } else {
             res.json({
-                message: 'login failed'
+                error: 'Please Enter valid email and Password'
             })
         }
     } catch (e) {
-        console.log('error found')
+        console.log('Login failed!')
     }
 })
 
@@ -86,7 +87,7 @@ router.post('/admin-data', async(req, res) => {
                 )
         } else {
             res.json({
-                message: "Data Insertion Failed"
+                error: "Data Insertion Failed"
             })
         }
     } catch (e) {
