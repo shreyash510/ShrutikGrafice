@@ -15,7 +15,10 @@ function App() {
         (AdminPath === '/admin'|| AdminPath === '/admin/create-items'  || AdminPath === '/admin/orders') ? <Admin/>  :<Navbar />
       }   
       <RouterMenu/>
-      < Footer/>
+      {
+        (AdminPath === '/admin'|| AdminPath === '/admin/create-items'  || AdminPath === '/admin/orders') ? null  :< Footer/>
+      } 
+      {/* < Footer/> */}
     </>
   );
 }

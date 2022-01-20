@@ -11,20 +11,27 @@ function AdminAbout() {
             <input type="text" className="form-control" name="name" placeholder='Enter Name...' />
           </div>
           <div class="col-md-5">
-            <label for="inputState" class="form-label">State</label>
+            <label for="inputState" class="form-label">Categories</label>
             <select id="inputState" class="form-select">
               <option selected>Choose...</option>
               <option>Birthday Banner</option>
               <option>Wedding Card</option>
+              <option>Festivel Banner</option>
+              <option>Logo Design</option>
+              <option>Invitation Card</option>
+              <option>Menu Card</option>
+              <option>Visiting Card</option>
+              <option>Business Card</option>
+              <option>Election Card</option>
             </select>
           </div>
           <div class="col-md-6 flex">
             <span class="input-group-text">Discount Price</span>
-            <input type="text" class="form-control" aria-label="Dollar amount (with dot and two decimal places)" />
+            <input type="number" class="form-control"/>
           </div>
           <div class="col-md-6 flex">
             <span class="input-group-text">Original Price</span>
-            <input type="text" class="form-control" aria-label="Dollar amount (with dot and two decimal places)" />
+            <input type="number" class="form-control"/>
           </div>
           <div class="mb-3 col-md-6">
             <label for="formFile" class="form-label">Upload Image 1</label>
@@ -35,7 +42,6 @@ function AdminAbout() {
             <input class="form-control" type="file" id="formFile" />
           </div>
           <div class="form-floating">
-          {/* <label for="formFile" class="form-label">Product Description</label> */}
             <textarea style={{ height: '100px' }} class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" ></textarea>
             <label for="floatingTextarea2">Enter Description here....</label>
           </div>
