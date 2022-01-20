@@ -1,8 +1,28 @@
 .register{
     width: 40em;
 }
+
 @media (max-width:500px) {
-    .container{
+    .register{
+        width: 100%;  
+        position: relative;
+        top: 0;
+        color: red;  
+    }
+    .login{
+        width: 100%;
+    }
+    .forgot{
         width: 100%;
     }
 }
+
+/* @media (max-width:1075px) {
+    .register{
+        position: relative;
+        top:6em;
+        margin: 0em 0em 10em 0em;
+        
+    }
+    
+} */

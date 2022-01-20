@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { NavLink } from 'react-router-dom'
+import { NavLink } from 'react-router-dom';
+import ('../styling/register.css')
 
 
 const Login = () => {
@@ -40,7 +41,7 @@ const Login = () => {
     }
     return (
         <>
-            <div style={color} className="container my-5 p-4 rounded-2xl border-2 shadow-sm w-[25em]">
+            <div style={color} className="login container my-5 p-4 rounded-2xl border-2 shadow-sm w-[25em]">
                 <p style={msgColor}>{msg}</p>
                 <form className='pt-3'>
                     <div className="mb-4">
@@ -51,7 +52,8 @@ const Login = () => {
                         <label className="form-label">Password</label>
                         <input style={color} type="password" onChange={inputEvent} name="pass" placeholder='enter pass' className="form-control" required/>
                     </div>
-                    <NavLink to="/SignIn" className='text-blue-700 text-center' >Create new account</NavLink><br />
+                    <NavLink to="/register" className='text-blue-700 text-center' >Create new account</NavLink>
+                    <NavLink style={{position:'relative', right:'-50px'}} to="/forgot" className='forgot text-blue-700 text-center' >forgot Password</NavLink>
 
                     <div className="col-12 mt-3 ml-4 mr-3">
                         <button onClick={btnClick} className="btn btn-primary">submit</button>

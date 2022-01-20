@@ -11,6 +11,7 @@ import ViewSection from '../Pages/ViewSection';
 // import Admin from '../Pages/AdminSide/Admin';
 import Orders from '../Pages/AdminSide/Orders';
 import CreateProduct from '../Pages/AdminSide/CreateProduct';
+import Forgot from '../Pages/Forgot';
 
 export default function RouterMenu() {
     return (
@@ -23,7 +24,7 @@ export default function RouterMenu() {
                 <Route path="/templates/viewsection/:id" element={<ViewSection />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/register" element={<Register />} />
-                {/* <Route path="/admin" element={<Admin />} /> */}
+                <Route path="/forgot" element={<Forgot />} />
 
 
                 <Route path="/admin" element={<Admin />} />

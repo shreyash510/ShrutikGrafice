@@ -1,53 +1,68 @@
 import React from 'react';
-import ('../../styling/CreateProduct.css')
+import { useState } from 'react';
+import('../../styling/CreateProduct.css')
 
 function AdminAbout() {
+  const [info, setInfo] = useState({})
+  const inputEvent=(e)=>{
+    setInfo((preV)=>{
+      return{
+        ...preV,
+        [e.target.name]:e.target.value
+      }
+    })
+  }
+
+  const btnClick=(e)=>{
+    e.preventDefault()
+    console.log(info)
+  }
   return (
     <>
       <div className="register container p-2 rounded-2xl border-2 shadow-sm my-24">
         <form method='POST' className="row g-3">
           <div className="col-md-7">
             <label className="form-label"> Name</label>
-            <input type="text" className="form-control" name="name" placeholder='Enter Name...' />
+            <input onChange={inputEvent}  type="text" className="form-control" name="name" placeholder='Enter Name...' />
           </div>
-          <div class="col-md-5">
-            <label for="inputState" class="form-label">Categories</label>
-            <select id="inputState" class="form-select">
+          <div className="col-md-5">
+            <label htmlFor="inputState" className="form-label">Categories</label>
+            <select onChange={inputEvent} name='Category'  defaultValue="Select..." className="form-select" >
               <option selected>Choose...</option>
-              <option>Birthday Banner</option>
-              <option>Wedding Card</option>
-              <option>Festivel Banner</option>
-              <option>Logo Design</option>
-              <option>Invitation Card</option>
-              <option>Menu Card</option>
-              <option>Visiting Card</option>
-              <option>Business Card</option>
-              <option>Election Card</option>
+              <option value="Birthday Banner">Birthday Banner</option>
+              <option value="Wedding Card">Wedding Card</option>
+              <option value="Festivel Banner">Festivel Banner</option>
+              <option value="Logo Design">Logo Design</option>
+              <option value="Invitation Card">Invitation Card</option>
+              <option value="Menu Card">Menu Card</option>
+              <option value="Visiting Card">Visiting Card</option>
+              <option value="Business Card">Business Card</option>
+              <option value="Election Card">Election Card</option>
             </select>
           </div>
-          <div class="col-md-6 flex">
-            <span class="input-group-text">Discount Price</span>
-            <input type="number" class="form-control"/>
+          <div className="col-md-6 flex">
+            <span className="input-group-text">Discount Price</span>
+            <input onChange={inputEvent} name='DiscountP' type="number" className="form-control" />
           </div>
-          <div class="col-md-6 flex">
-            <span class="input-group-text">Original Price</span>
-            <input type="number" class="form-control"/>
+          <div className="col-md-6 flex">
+            <span className="input-group-text">Original Price</span>
+            <input onChange={inputEvent} name='DiscountP' type="number" className="form-control" />
           </div>
-          <div class="mb-3 col-md-6">
-            <label for="formFile" class="form-label">Upload Image 1</label>
-            <input class="form-control" type="file" id="formFile" />
+          <div className="mb-3 col-md-6">
+            <label htmlFor="formFile" className="form-label">Upload Image 1</label>
+            <input onChange={inputEvent} name='Image1' className="form-control" type="file"/>
           </div>
-          <div class="mb-3 col-md-6">
-            <label for="formFile" class="form-label">Upload Image 2</label>
-            <input class="form-control" type="file" id="formFile" />
+          <div className="mb-3 col-md-6">
+            <label htmlFor="formFile" className="form-label">Upload Image 2</label>
+            <input onChange={inputEvent} name='Image2' className="form-control" type="file" id="formFile" />
           </div>
-          <div class="form-floating">
-            <textarea style={{ height: '100px' }} class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" ></textarea>
-            <label for="floatingTextarea2">Enter Description here....</label>
+          <div className="form-floating">
+            <textarea onChange={inputEvent} name='Description' style={{ height: '100px' }} className="form-control" placeholder="Leave a comment here" id="floatingTextarea2" ></textarea>
+            <label htmlFor="floatingTextarea2">Enter Description here....</label>
           </div>
 
           <div className="col-12">
-            <button className="btn btn-primary">SignUp</button>
+            <button onClick={btnClick} className="btn btn-primary">SignUp</button>
           </div>
         </form>
       </div>

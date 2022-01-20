@@ -10,7 +10,8 @@ const userSchema = new mongoose.Schema({
     },
     email: {
          type: String,
-        required: true
+        required: true,
+        lowercase:true,
     },
     phone: {
         type: Number,
@@ -27,6 +28,10 @@ const userSchema = new mongoose.Schema({
     cpass: {
         type: String,
         required: true
+    },
+    data :{
+        type: Date,
+        default:Date.now
     },
     tokens: [{
         token: {

@@ -16,7 +16,7 @@ function App() {
       }   
       <RouterMenu/>
       {
-        (AdminPath === '/admin'|| AdminPath === '/admin/create-items'  || AdminPath === '/admin/orders') ? null  :< Footer/>
+        (AdminPath === '/admin'|| AdminPath === '/admin/create-items'  || AdminPath === '/admin/orders'|| AdminPath === '/register'|| AdminPath === '/Login'|| AdminPath === '/forgot') ? null  :< Footer/>
       } 
       {/* < Footer/> */}
     </>

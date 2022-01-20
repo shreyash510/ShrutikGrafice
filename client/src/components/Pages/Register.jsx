@@ -43,11 +43,10 @@ const Register = () => {
             setMsg(`Your password and Current Passsword Doesn't match`)
             setMsgColor({color:'red',fontWeigth:'bold'})
         }
-
     }
     return (
         <>
-            <div style={color} className="register container my-5 p-4 rounded-2xl border-2 shadow-sm my-5 ">
+            <div style={color} className="register container p-4 rounded-2xl border-2 shadow-sm">
             <p style={msgColor}>{msg}</p>
                 <form method='POST' className="row g-3">
                     <div className="col-md-5">
@@ -64,7 +63,7 @@ const Register = () => {
                     </div>
                     <div className="col-md-5">
                         <label className="form-label">State</label>
-                        <input  style={color} type="text" className="form-control" name="profession" onChange={inputEvent} placeholder='Enter Profesion...' />
+                        <input  style={color} type="text" className="form-control" name="profession" onChange={inputEvent} placeholder='Enter State...' />
                     </div>
                     <div className="col-md-6">
                         <label className="form-label"> Password</label>
