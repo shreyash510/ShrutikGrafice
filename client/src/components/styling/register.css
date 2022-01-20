@@ -1,13 +1,12 @@
 .register{
     width: 40em;
+    margin-top: 2em;
 }
 
 @media (max-width:500px) {
     .register{
         width: 100%;  
-        position: relative;
-        top: 0;
-        color: red;  
+        margin-top: -50px;
     }
     .login{
         width: 100%;

@@ -51,7 +51,6 @@ router.post('/register', async (req, res) => {
     }
 })
 
-
 // user login 
 router.post("/login", async (req, res) => {
     try {
@@ -71,6 +70,28 @@ router.post("/login", async (req, res) => {
         console.log('Login failed!')
     }
 })
+
+// user forgot password
+router.post('/forgot', async (req, res)=>{
+    try{
+    const {email} = req.body
+    const forgotPass = await UserData.findOne({email: email});
+    if(forgotPass){
+        res.json({
+            message: 'Email successfully Matched!'
+        })
+    }else{
+        res.json({
+            error: 'Please Enter Valid email !'
+        })
+    }
+}catch(e){
+    res.json({
+        error: 'server error plz try again'
+    })
+}
+}) 
+
 
 router.post('/admin-data', async(req, res) => {
     const { title, img, price } = req.body;

@@ -17,7 +17,7 @@ const Login = () => {
                 [e.target.name]: e.target.value
             }
         })
-    }
+    } 
     const btnClick = (e) => {
         e.preventDefault()
         const { email, pass } = info;
@@ -26,7 +26,8 @@ const Login = () => {
             axios.post(url, info)
                 .then((res)=>{
                     const msgData = res.data.message;
-                    (msgData)? setMsg(res.data.message) || setMsgColor({color:'green',fontWeigth:'bold'}) ||  setColor({borderColor:'green'}) : setMsg(res.data.error) || setColor({borderColor:'red'});
+                    (msgData)? setMsg(res.data.message) || setMsgColor({color:'green',fontWeigth:'bold'}) ||  setColor({borderColor:'green'}) :
+                     setMsg(res.data.error) || setColor({borderColor:'red'})|| setMsgColor({color:'red',fontWeigth:'bold'});
                 })
                 .catch((e) => {
                     // alert('error found')
