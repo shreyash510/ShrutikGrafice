@@ -19,7 +19,7 @@ function AdminAbout() {
   }
   return (
     <>
-      <div className="register container p-2 rounded-2xl border-2 shadow-sm my-24">
+      <div className="createProduct z-40 container p-3 my-4 rounded-2xl border-2 shadow-sm">
         <form method='POST' className="row g-3">
           <div className="col-md-7">
             <label className="form-label"> Name</label>
@@ -42,11 +42,11 @@ function AdminAbout() {
           </div>
           <div className="col-md-6 flex">
             <span className="input-group-text">Discount Price</span>
-            <input onChange={inputEvent} name='DiscountP' type="number" className="form-control" />
+            <input onChange={inputEvent} name='DiscountPrice' type="number" className="form-control" />
           </div>
           <div className="col-md-6 flex">
             <span className="input-group-text">Original Price</span>
-            <input onChange={inputEvent} name='DiscountP' type="number" className="form-control" />
+            <input onChange={inputEvent} name='OriginalPrice' type="number" className="form-control" />
           </div>
           <div className="mb-3 col-md-6">
             <label htmlFor="formFile" className="form-label">Upload Image 1</label>

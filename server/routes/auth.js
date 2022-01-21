@@ -72,30 +72,59 @@ router.post("/login", async (req, res) => {
 })
 
 // user forgot password
-router.post('/forgot', async (req, res)=>{
+router.post('/forgot', async (req, res) => {
+    // console.log(email)
     try{
-    const {email} = req.body
-    const forgotPass = await UserData.findOne({email: email});
-    if(forgotPass){
-        res.json({
-            message: 'Email successfully Matched!'
-        })
-    }else{
-        res.json({
-            error: 'Please Enter Valid email !'
-        })
+        const {email,pass, cpass} = req.body;
+        const searchEmail = await UserData.findOneAndUpdate({email:email}, {pass:pass,cpass:cpass})
+        if (searchEmail) {
+            res.status(200).json({
+                message: 'Enter new Password, Click Update button and Go to Login Page'
+            })
+        } else {
+            res.json({
+                error: 'Please Enter Valid Email!'
+            })
+        }
+    }catch(e){
+        console.log(e)
     }
-}catch(e){
-    res.json({
-        error: 'server error plz try again'
-    })
-}
-}) 
+
+    // try {
+    //     const { email } = req.body;
+    //     const searchEmail = await UserData.findOne({ email: email })
+    //     if (searchEmail) {
+    //         res.status(200).json({
+    //             message: 'Email Match Successfully'
+    //         })
+    //     } else {
+    //         res.json({
+    //             error: 'Please Enter Valid Email!'
+    //         })
+    //     }
+
+    //     const {pass, cpass} = req.body;
+    //     const _id = searchEmail._id;
+    //     const updatePass = await UserData.findByIdAndUpdate({_id:_id},{pass,cpass},{new:true})
+    //     if(updatePass){
+    //         res.status(200).json({
+    //             message: 'Password Update Successfully'
+    //         })
+    //     } else {
+    //         res.json({
+    //             error: 'Update Failed!'
+    //         })
+    //     }
+
+    // } catch (e) {
+    //     console.log(e)
+    // }
+})
 
 
-router.post('/admin-data', async(req, res) => {
+router.post('/admin-data', async (req, res) => {
     const { title, img, price } = req.body;
-    const adminData =await AdminData({
+    const adminData = await AdminData({
         title, img, price
     });
     try {
@@ -118,28 +147,28 @@ router.post('/admin-data', async(req, res) => {
     }
 });
 
-router.get("/admin-data", async (req, res)=>{
-    try{
+router.get("/admin-data", async (req, res) => {
+    try {
         const bannderData = await AdminData.find();
         res.send(bannderData);
-    }catch(e){
+    } catch (e) {
         console.log(e);
     }
 })
 
 
-router.get("/admin-data/:id", async (req, res)=>{
-    try{
+router.get("/admin-data/:id", async (req, res) => {
+    try {
         const _id = req.params.id;
         // console.log(_id)
         const bannderData = await AdminData.findById(_id);
 
-        if(!bannderData){
+        if (!bannderData) {
             return res.status(404).send();
-        }else{
+        } else {
             res.send(bannderData);
         }
-    }catch(e){
+    } catch (e) {
         console.log(e);
     }
 })

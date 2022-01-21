@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import ('../styling/register.css')
 
@@ -9,6 +9,8 @@ const Register = () => {
     const [color, setColor]=useState({borderColor:''});
     const [msg, setMsg]=useState('');
     const [msgColor, setMsgColor] = useState({color:'red',fontWeigth:'bold'})
+
+    const navigator = useNavigate(); 
 
     const inputEvent = (e) => {
         setInfo((preV) => {
@@ -32,7 +34,8 @@ const Register = () => {
             axios.post(url, info)
                 .then((res)=>{
                     const msgData = res.data.message;
-                    (msgData)? setMsg(res.data.message) || setMsgColor({color:'green',fontWeigth:'bold'}) ||  setColor({borderColor:'green'}) : setMsg(res.data.error) || setColor({borderColor:'red'}) || setMsgColor({color:'red',fontWeigth:'bold'});
+                    (msgData)? setMsg(res.data.message) || setMsgColor({color:'green',fontWeigth:'bold'}) ||  setColor({borderColor:'green'}) || setTimeout(()=>{navigator('/login')},2000):
+                     setMsg(res.data.error) || setColor({borderColor:'red'}) || setMsgColor({color:'red',fontWeigth:'bold'});
                 })
                 .catch((e)=>{
                     setColor({borderColor:'red'})
@@ -58,7 +61,7 @@ const Register = () => {
                         <input  style={color} type="email" className="form-control" name="email" onChange={inputEvent} placeholder='Enter email...' />
                     </div>
                     <div className="col-md-7">
-                        <label className="form-label">Mobile</label>
+                        <label className="form-label">Mobile (what's app no.)</label>
                         <input  style={color} type="text" className="form-control" name="phone" onChange={inputEvent} placeholder='Enter phone no...' />
                     </div>
                     <div className="col-md-5">

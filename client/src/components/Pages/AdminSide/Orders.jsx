@@ -3,7 +3,7 @@ import React from 'react';
 function AdminHome() {
   return (
     <>
-      <div className="container my-20">
+      <div style={{zIndex: '-1'}} className="container my-20">
         <table class="table">
           <thead>
             <tr>

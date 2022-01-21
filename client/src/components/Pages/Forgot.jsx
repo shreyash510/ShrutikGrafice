@@ -1,12 +1,15 @@
 import axios from 'axios';
 import React from 'react';
 import { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink,useNavigate } from 'react-router-dom';
 import('../styling/register.css')
-// import axios from 'axios'
 
 const Forgot = () => {
+    const navigate = useNavigate();
+
     const [info, setInfo] = useState([])
+    const [btn1, setBtn1]=useState({visibility:'visible'})
+    const [btn2, setBtn2]=useState({visibility:'hidden'})
     const [hide, setHide] = useState({ display:'none' })
     const [msg, setMsg]=useState('')
     const [msgColor, setMsgColor]= useState({color: 'green'})
@@ -25,10 +28,11 @@ const Forgot = () => {
         // console.log(info)
         
         const { email, pass, cpass } = info;
+       
         if (!email) {
             console.log('ple enter email')
-        }else if(pass !== cpass){
-            setMsg(`Your password and Current Passsword Doesn't match`)
+        }else if(pass !== cpass ){
+            setMsg(`Your password and Current Passsword Doesn't match ( Password length must be greater than 4)`)
             setMsgColor({color:'red'})
             setBorderColor({borderColor:'red'})
         } else {
@@ -36,14 +40,14 @@ const Forgot = () => {
             axios.post(url, info)
                 .then((res) => {
                     const msgData = res.data.message;
-                    (msgData) ? setMsg('Your are ready to update password') || setMsgColor({color:'green'}) ||setBorderColor({borderColor:'green'}) || setHide({visibility: 'visible'}): 
+                    (msgData) ? setMsg(msgData) || setMsgColor({color:'green'}) ||setBorderColor({borderColor:'green'}) || setHide({visibility: 'visible'}) || setBtn1({display:'none'}) || setBtn2({visibility:'visible'}): 
                                 setMsg(res.data.error) || setMsgColor({color:'red'}) || setBorderColor({borderColor:'red'})
                 })
                 .catch((e) => {
                     console.log('error found')
                 })
         }
-        
+              
     }
     return (
         <>
@@ -65,8 +69,12 @@ const Forgot = () => {
                         </div>
                     </div>
                     <NavLink to="/register" className='text-blue-700 text-center' >Create new account</NavLink>
-                    <div className="col-12 mt-3 ml-4 mr-3">
-                        <button onClick={btnClick} className="btn btn-primary">submit</button>
+                    <div style={btn1} className="col-12 mt-3 ml-4 mr-3">
+                        <button onClick={btnClick} className="btn btn-primary">Next</button>
+                    </div>
+                    <div style={btn2} className="col-12 mt-3 ml-4 mr-3 flex justify-around">
+                        <button onClick={btnClick} className="btn btn-primary">Update</button>
+                        <button onClick={()=>{navigate('/login')}} className="btn btn-primary">Go to Login</button>
                     </div>
                 </form>
             </div>

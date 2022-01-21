@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import ('../styling/register.css')
 
 
 const Login = () => {
+    const navigater = useNavigate();
+
     const [info, setInfo] = useState([])
     const [color, setColor]=useState({borderColor:''});
     const [msg, setMsg]=useState('');
@@ -26,7 +28,7 @@ const Login = () => {
             axios.post(url, info)
                 .then((res)=>{
                     const msgData = res.data.message;
-                    (msgData)? setMsg(res.data.message) || setMsgColor({color:'green',fontWeigth:'bold'}) ||  setColor({borderColor:'green'}) :
+                    (msgData)? setMsg(res.data.message) || setMsgColor({color:'green',fontWeigth:'bold'}) ||  setColor({borderColor:'green'}) || setTimeout(()=>{navigater('/',2000)}) :
                      setMsg(res.data.error) || setColor({borderColor:'red'})|| setMsgColor({color:'red',fontWeigth:'bold'});
                 })
                 .catch((e) => {
@@ -47,11 +49,11 @@ const Login = () => {
                 <form className='pt-3'>
                     <div className="mb-4">
                         <label className="form-label">Email address</label>
-                        <input style={color} type="email" onChange={inputEvent} id='' name="email" placeholder='enter email' className="form-control" required/>
+                        <input style={color} type="email" onChange={inputEvent} id='' name="email" placeholder='Enter email...' className="form-control" required/>
                     </div>
                     <div className="mb-4">
                         <label className="form-label">Password</label>
-                        <input style={color} type="password" onChange={inputEvent} name="pass" placeholder='enter pass' className="form-control" required/>
+                        <input style={color} type="password" onChange={inputEvent} name="pass" placeholder='Enter pass...' className="form-control" required/>
                     </div>
                     <NavLink to="/register" className='text-blue-700 text-center' >Create new account</NavLink>
                     <NavLink style={{position:'relative', right:'-50px'}} to="/forgot" className='forgot text-blue-700 text-center' >forgot Password</NavLink>

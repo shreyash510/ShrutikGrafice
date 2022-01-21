@@ -42,7 +42,24 @@ const AdminPanel = () => {
                     })}
                 </ul>
             </div>
+            {/* <div className="container row g-3 relative top-64">
+                <div className="col-md-4">
+                    <div className="card">
+                        <p>Total Order</p>
+                    </div>
+                </div>
+                <div className="col-md-4">
+                    <div className="card">
+                        <p>Total Users</p>
+                    </div>
+                </div>
+                <div className="col-md-4">
+                    <div className="card">
+                        <p>Total Product</p>
+                    </div>
+                </div> 
 
+            </div>*/}
         </>
     )
 }

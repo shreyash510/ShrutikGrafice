@@ -32,6 +32,7 @@
     left: -100%;
     transition: 1s;
     border-radius: 0px 20px 20px 0px;
+    z-index: 1;
   }
   
   .sidebar-container.active {

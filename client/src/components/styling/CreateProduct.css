@@ -1,6 +1,14 @@
+.createProduct{
+    width: 50em;
+    position: relative;
+    top: 5em;
+    /* opacity: 5; */
+    z-index: -1;
+}
 @media (max-width:500px) {
-    .register{
+    .createProduct{
         position: relative;
         top:6em;
+        width: 100%;
     }
 }

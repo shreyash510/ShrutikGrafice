@@ -12,11 +12,14 @@ function App() {
     <>
       
       {
-        (AdminPath === '/admin'|| AdminPath === '/admin/create-items'  || AdminPath === '/admin/orders') ? <Admin/>  :<Navbar />
+        (AdminPath === '/admin'|| AdminPath === '/admin/create-items'  || 
+          AdminPath === '/admin/orders') ? <Admin/>  :<Navbar />
       }   
       <RouterMenu/>
       {
-        (AdminPath === '/admin'|| AdminPath === '/admin/create-items'  || AdminPath === '/admin/orders'|| AdminPath === '/register'|| AdminPath === '/Login'|| AdminPath === '/forgot') ? null  :< Footer/>
+        (AdminPath === '/admin'|| AdminPath === '/admin/create-items'  ||
+         AdminPath === '/admin/orders'|| AdminPath === '/register'||
+          AdminPath === '/login'|| AdminPath === '/forgot') ? null  :< Footer/>
       } 
       {/* < Footer/> */}
     </>

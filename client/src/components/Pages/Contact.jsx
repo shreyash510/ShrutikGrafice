@@ -3,7 +3,7 @@ import React from 'react'
 export default function Contact() {
     return (
         <>
-            <div className="container px-5 my-5">
+            <div className="container px-2 my-5">
                 <div className="contact flex item-center justify-around row g-3">
                     <div className="col-md-4 ">
                         <h1 className='text-5xl text-center pb-4' >Let's talk</h1>
@@ -38,14 +38,12 @@ export default function Contact() {
                         </div>
                         <div className="mb-3">
                             <label htmlFor="exampleFormControlTextarea1" className="form-label">Example textarea</label>
-                            <textarea className="form-control" placeholder="Enter message here...." rows="10"></textarea>
+                            <textarea className="form-control" placeholder="Enter message here...." rows="8"></textarea>
+                        </div>
+                        <div className="col-12">
+                            <button className="btn btn-primary">Sign in</button>
                         </div>
                     </div>
-
-                    <div className="col-12">
-                        <button className="btn btn-primary">Sign in</button>
-                    </div>
-
                 </div>
             </div>
 
