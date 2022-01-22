@@ -74,9 +74,9 @@ router.post("/login", async (req, res) => {
 // user forgot password
 router.post('/forgot', async (req, res) => {
     // console.log(email)
-    try{
-        const {email,pass, cpass} = req.body;
-        const searchEmail = await UserData.findOneAndUpdate({email:email}, {pass:pass,cpass:cpass})
+    try {
+        const { email, pass, cpass } = req.body;
+        const searchEmail = await UserData.findOneAndUpdate({ email: email }, { pass: pass, cpass: cpass })
         if (searchEmail) {
             res.status(200).json({
                 message: 'Enter new Password, Click Update button and Go to Login Page'
@@ -86,7 +86,7 @@ router.post('/forgot', async (req, res) => {
                 error: 'Please Enter Valid Email!'
             })
         }
-    }catch(e){
+    } catch (e) {
         console.log(e)
     }
 
@@ -121,57 +121,22 @@ router.post('/forgot', async (req, res) => {
     // }
 })
 
-
-router.post('/admin-data', async (req, res) => {
-    const { title, img, price } = req.body;
-    const adminData = await AdminData({
-        title, img, price
-    });
-    try {
-        if (adminData) {
-            adminData.save()
-                .then(
-                    res.json({
-                        message: "Data Inserted successfully"
-                    })
-                )
+router.post('/create-product', (req, res) => {
+    
+    
+    upload(req, res, (err) => {
+        if (err) {
+            console.log(err)
         } else {
-            res.json({
-                error: "Data Insertion Failed"
+            const {title, DiscountPrice, OriginalPrice, category, description,image}=req.body;
+            const productData = new AdminData({
+                title, DiscountPrice, OriginalPrice, category, description,image
             })
+            newImage.save()
+                .then(() => res.send('successfully uploaded'))
+                .catch((e) => console.log(e))
         }
-    } catch (e) {
-        res.json({
-            error: "Error Found"
-        })
-    }
-});
-
-router.get("/admin-data", async (req, res) => {
-    try {
-        const bannderData = await AdminData.find();
-        res.send(bannderData);
-    } catch (e) {
-        console.log(e);
-    }
+    })
 })
-
-
-router.get("/admin-data/:id", async (req, res) => {
-    try {
-        const _id = req.params.id;
-        // console.log(_id)
-        const bannderData = await AdminData.findById(_id);
-
-        if (!bannderData) {
-            return res.status(404).send();
-        } else {
-            res.send(bannderData);
-        }
-    } catch (e) {
-        console.log(e);
-    }
-})
-
 
 module.exports = router;

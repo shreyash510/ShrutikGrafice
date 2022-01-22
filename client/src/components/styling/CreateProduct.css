@@ -3,7 +3,7 @@
     position: relative;
     top: 5em;
     /* opacity: 5; */
-    z-index: -1;
+    z-index: 5;
 }
 @media (max-width:500px) {
     .createProduct{

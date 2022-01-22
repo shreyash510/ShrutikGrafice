@@ -1,6 +1,8 @@
+import axios from 'axios';
 import React from 'react';
 import { useState } from 'react';
 import('../../styling/CreateProduct.css')
+
 
 function AdminAbout() {
   const [info, setInfo] = useState({})
@@ -13,9 +15,15 @@ function AdminAbout() {
     })
   }
 
+
   const btnClick=(e)=>{
     e.preventDefault()
     console.log(info)
+    const url= 'http://localhost:8000/create-product';
+    axios.post(url, info)
+    .then(res =>console.log(res))
+    .catch(e=>console.log(e))
+    
   }
   return (
     <>
@@ -23,11 +31,11 @@ function AdminAbout() {
         <form method='POST' className="row g-3">
           <div className="col-md-7">
             <label className="form-label"> Name</label>
-            <input onChange={inputEvent}  type="text" className="form-control" name="name" placeholder='Enter Name...' />
+            <input onChange={inputEvent}  type="text" className="form-control" name="title" placeholder='Enter Name...' />
           </div>
           <div className="col-md-5">
             <label htmlFor="inputState" className="form-label">Categories</label>
-            <select onChange={inputEvent} name='Category'  defaultValue="Select..." className="form-select" >
+            <select onChange={inputEvent} name='category'  defaultValue="Select..." className="form-select" >
               <option selected>Choose...</option>
               <option value="Birthday Banner">Birthday Banner</option>
               <option value="Wedding Card">Wedding Card</option>
@@ -49,15 +57,11 @@ function AdminAbout() {
             <input onChange={inputEvent} name='OriginalPrice' type="number" className="form-control" />
           </div>
           <div className="mb-3 col-md-6">
-            <label htmlFor="formFile" className="form-label">Upload Image 1</label>
-            <input onChange={inputEvent} name='Image1' className="form-control" type="file"/>
-          </div>
-          <div className="mb-3 col-md-6">
-            <label htmlFor="formFile" className="form-label">Upload Image 2</label>
-            <input onChange={inputEvent} name='Image2' className="form-control" type="file" id="formFile" />
+            <label htmlFor="formFile" className="form-label">Upload Image</label>
+            <input onChange={inputEvent} name='image' className="form-control" type="file"/>
           </div>
           <div className="form-floating">
-            <textarea onChange={inputEvent} name='Description' style={{ height: '100px' }} className="form-control" placeholder="Leave a comment here" id="floatingTextarea2" ></textarea>
+            <textarea onChange={inputEvent} name='description' style={{ height: '100px' }} className="form-control" placeholder="Leave a comment here" id="floatingTextarea2" ></textarea>
             <label htmlFor="floatingTextarea2">Enter Description here....</label>
           </div>
 
