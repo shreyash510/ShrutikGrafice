@@ -6,7 +6,6 @@ import('../../styling/CreateProduct.css')
 
 function AdminAbout() {
   const [info, setInfo] = useState({})
-  // const [img, setImg]= useState({})
   const inputEvent=(e)=>{
     setInfo((preV)=>{
       return{
@@ -16,24 +15,10 @@ function AdminAbout() {
     })
   }
 
-  // const imgUpload=(e)=>{
-  //   const fileSelected = e.target.files;
-  //   const fname = fileSelected[0].name;
-  //   if(fname.length>0){
-  //     const fileReader = new FileReader();
-  //     fileReader.onload = function(e){
-  //       // console.log([e.target.result])
-  //       setImg({image: e.target.result})
-  //     }
-  //     fileReader.readAsDataURL(fileSelected[0])
-  //   }
-  // }
-
   const btnClick=(e)=>{
     e.preventDefault()
     console.log(info)
-    // console.log(img)
-    // const data = {info: info, image : img}
+
     const url= 'http://localhost:8000/create-product';
     axios.post(url, info)
     .then(res =>console.log(res))
