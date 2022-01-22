@@ -6,6 +6,7 @@ import('../../styling/CreateProduct.css')
 
 function AdminAbout() {
   const [info, setInfo] = useState({})
+  // const [img, setImg]= useState({})
   const inputEvent=(e)=>{
     setInfo((preV)=>{
       return{
@@ -15,10 +16,24 @@ function AdminAbout() {
     })
   }
 
+  // const imgUpload=(e)=>{
+  //   const fileSelected = e.target.files;
+  //   const fname = fileSelected[0].name;
+  //   if(fname.length>0){
+  //     const fileReader = new FileReader();
+  //     fileReader.onload = function(e){
+  //       // console.log([e.target.result])
+  //       setImg({image: e.target.result})
+  //     }
+  //     fileReader.readAsDataURL(fileSelected[0])
+  //   }
+  // }
 
   const btnClick=(e)=>{
     e.preventDefault()
     console.log(info)
+    // console.log(img)
+    // const data = {info: info, image : img}
     const url= 'http://localhost:8000/create-product';
     axios.post(url, info)
     .then(res =>console.log(res))
@@ -56,9 +71,9 @@ function AdminAbout() {
             <span className="input-group-text">Original Price</span>
             <input onChange={inputEvent} name='OriginalPrice' type="number" className="form-control" />
           </div>
-          <div className="mb-3 col-md-6">
+          <div className="mb-3 col-md-12">
             <label htmlFor="formFile" className="form-label">Upload Image</label>
-            <input onChange={inputEvent} name='image' className="form-control" type="file"/>
+            <input onChange={inputEvent} name='image' className="form-control" type="text" placeholder='Enter Image Url....'/>
           </div>
           <div className="form-floating">
             <textarea onChange={inputEvent} name='description' style={{ height: '100px' }} className="form-control" placeholder="Leave a comment here" id="floatingTextarea2" ></textarea>

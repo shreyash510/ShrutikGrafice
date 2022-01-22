@@ -120,23 +120,35 @@ router.post('/forgot', async (req, res) => {
     //     console.log(e)
     // }
 })
+router.get('/create-product', async (req, res)=>{
+    try{
+        const productData = await AdminData.find();
+        res.send(productData)
+    }catch(e){
+        console.log(e)
+    }
+})
 
-router.post('/create-product', (req, res) => {
-    
-    
-    upload(req, res, (err) => {
-        if (err) {
-            console.log(err)
-        } else {
-            const {title, DiscountPrice, OriginalPrice, category, description,image}=req.body;
-            const productData = new AdminData({
-                title, DiscountPrice, OriginalPrice, category, description,image
+router.post('/create-product', async (req, res) => {
+   try{
+        const {title, DiscountPrice, OriginalPrice, category,description,image} = req.body
+        // console.log(title, DiscountPrice, OriginalPrice, category,description,image)
+        const productData =  AdminData({
+            title, DiscountPrice, OriginalPrice, category,description,image
+        })
+        if(productData){
+            productData.save().then(
+                res.json({
+                    message: 'Product successfully inserted'
+                })
+            ).catch(e=>console.log(e))
+        }else{
+            res.json({
+                error: 'Product insertion Failed'
             })
-            newImage.save()
-                .then(() => res.send('successfully uploaded'))
-                .catch((e) => console.log(e))
         }
-    })
+    }
+    catch(e){console.log(e)}
 })
 
 module.exports = router;

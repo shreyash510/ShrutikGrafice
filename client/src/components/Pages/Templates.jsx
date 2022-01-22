@@ -7,7 +7,7 @@ export default function Templates() {
     const [database, setDatabase] = useState([]);
 
     const dbData = async () => {
-        const url = "http://localhost:8000/admin-data";
+        const url = "http://localhost:8000/create-product";
         await axios.get(url)
             .then((DBdata) => {
                 setDatabase(DBdata.data)
@@ -32,9 +32,10 @@ export default function Templates() {
                         return <CardStyle
                             key={v._id}
                             id={v._id}
-                            img={v.img}
+                            img={v.image}
                             title={v.title}
-                            price={v.price}
+                            DiscountPrice={v.DiscountPrice}
+                            OriginalPrice={v.OriginalPrice}
                             // onSelect={orderNow}
                         />
                     })

@@ -7,7 +7,7 @@ export default function Home() {
     const [database, setDatabase] = useState([])
 
     const dbData = async () => {
-        const url = "http://localhost:8000/admin-data";
+        const url = "http://localhost:8000/create-product";
         await axios.get(url)
             .then((DBdata) => {
                 setDatabase(DBdata.data)
@@ -24,7 +24,7 @@ export default function Home() {
 
             <div className="container">
                 <HomeDemo />
-                <p className='text-4xl py-4 font-bold'>Popular Templates</p>
+                <p className='text-3xl py-4 font-bold'>Popular Templates</p>
             </div>
             <div className="flex flex-wrap justify-center">
                 {
@@ -32,9 +32,10 @@ export default function Home() {
                         return <CardStyle
                             key={v._id}
                             id={v._id}
-                            img={v.img}
+                            img={v.image}
                             title={v.title}
-                            price={v.price}
+                            DiscountPrice={v.DiscountPrice}
+                            OriginalPrice={v.OriginalPrice}
                         />
                     })
                 }
