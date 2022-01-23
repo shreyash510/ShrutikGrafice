@@ -129,6 +129,22 @@ router.get('/create-product', async (req, res)=>{
     }
 })
 
+router.get("/create-product/:id", async (req, res)=>{
+    try{
+        const _id = req.params.id;
+        // console.log(_id)
+        const bannderData = await AdminData.findById(_id);
+
+        if(!bannderData){
+            return res.status(404).send();
+        }else{
+            res.send(bannderData);
+        }
+    }catch(e){
+        console.log(e);
+    }
+})
+
 router.post('/create-product', async (req, res) => {
    try{
         const {title, DiscountPrice, OriginalPrice, category,description,image} = req.body

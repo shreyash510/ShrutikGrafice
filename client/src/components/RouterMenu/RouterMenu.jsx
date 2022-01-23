@@ -12,6 +12,7 @@ import ViewSection from '../Pages/ViewSection';
 import Orders from '../Pages/AdminSide/Orders';
 import CreateProduct from '../Pages/AdminSide/CreateProduct';
 import Forgot from '../Pages/Forgot';
+import { BirthDay, BusinessCard, ElectionCard, FestivelCard, InvitationCard, Logo, MarrageCard, MenuCard } from '../Pages/TemplateTages';
 
 export default function RouterMenu() {
     return (
@@ -30,6 +31,16 @@ export default function RouterMenu() {
                 <Route path="/admin" element={<Admin />} />
                 <Route path="/admin/orders" element={<Orders />} />
                 <Route path="/admin/create-items" element={<CreateProduct />} />
+
+
+                <Route path="/templates/birthday" element={<BirthDay/>}></Route>
+                <Route path="/templates/festivel" element={<FestivelCard/>}></Route>
+                <Route path="/templates/logo" element={<Logo/>}></Route>
+                <Route path="/templates/invitation" element={<InvitationCard/>}></Route>
+                <Route path="/templates/marrage" element={<MarrageCard/>}></Route>
+                <Route path="/templates/menu" element={<MenuCard/>}></Route>
+                <Route path="/templates/business" element={<BusinessCard/>}></Route>
+                <Route path="/templates/election" element={<ElectionCard/>}></Route>
             </Routes>
 
             
