@@ -6,77 +6,80 @@ import('../../styling/CreateProduct.css')
 
 function AdminAbout() {
   const [info, setInfo] = useState({})
-  // const [img, setImg]= useState({})
-  const inputEvent=(e)=>{
-    setInfo((preV)=>{
-      return{
+  const [color, setColor] = useState({ borderColor: '' });
+  const [msg, setMsg] = useState('');
+  const [msgColor, setMsgColor] = useState({ color: 'red', fontWeigth: 'bold' })
+
+  const inputEvent = (e) => {
+    setInfo((preV) => {
+      return {
         ...preV,
-        [e.target.name]:e.target.value
+        [e.target.name]: e.target.value
       }
     })
   }
 
-  // const imgUpload=(e)=>{
-  //   const fileSelected = e.target.files;
-  //   const fname = fileSelected[0].name;
-  //   if(fname.length>0){
-  //     const fileReader = new FileReader();
-  //     fileReader.onload = function(e){
-  //       // console.log([e.target.result])
-  //       setImg({image: e.target.result})
-  //     }
-  //     fileReader.readAsDataURL(fileSelected[0])
-  //   }
-  // }
-
-  const btnClick=(e)=>{
+  const btnClick = (e) => {
     e.preventDefault()
-    console.log(info)
-    // console.log(img)
-    // const data = {info: info, image : img}
-    const url= 'http://localhost:8000/create-product';
-    axios.post(url, info)
-    .then(res =>console.log(res))
-    .catch(e=>console.log(e))
+    // console.log(info)
+    const { title, category, OriginalPrice, DiscountPrice, description, image } = info;
+    if (!title || !category || !OriginalPrice || !DiscountPrice || !description || !image) {
+      setMsg(`Please fill full form!`)
+      setMsgColor({ color: 'red', fontWeigth: 'bold' })
+      setColor({ borderColor: 'red' })
+    } else {
+        const url = 'http://localhost:8000/create-product';
+        axios.post(url, info)
+        .then((res) => {
+          const msgData = res.data.message;
+          (msgData) ? setMsg(res.data.message) || setMsgColor({ color: 'green', fontWeigth: 'bold' }) || setColor({ borderColor: 'green' }) || setTimeout(()=>{setInfo({
+            title:'',category:'', OriginalPrice:'', DiscountPrice:'', description:'', image:''}) || setMsg('') || setColor({ borderColor: 'gray' })},2000) :
+                      setMsg(res.data.error) || setColor({ borderColor: 'red' }) || setMsgColor({ color: 'red', fontWeigth: 'bold' });
+        })
+        .catch((e) => {
+          setColor({ borderColor: 'red' })
+          setMsg('Error Found')
+        })
+    }
     
   }
   return (
     <>
-      <div className="createProduct z-40 container p-3 my-4 rounded-2xl border-2 shadow-sm">
+      <div style={color} className="createProduct z-40 container p-3 my-4 rounded-2xl border-2 shadow-sm">
+        <p style={msgColor}>{msg}</p>
         <form method='POST' className="row g-3">
           <div className="col-md-7">
             <label className="form-label"> Name</label>
-            <input onChange={inputEvent}  type="text" className="form-control" name="title" placeholder='Enter Name...' />
+            <input style={color} onChange={inputEvent} type="text" className="form-control" name="title" value={info.title} placeholder='Enter Name...' />
           </div>
           <div className="col-md-5">
             <label htmlFor="inputState" className="form-label">Categories</label>
-            <select onChange={inputEvent} name='category'  defaultValue="Select..." className="form-select" >
-              <option selected>Choose...</option>
+            <select style={color} onChange={inputEvent} name='category' value={info.category} defaultValue={'DEFAULT'} className="form-select" >
+              <option value="DEFAULT" disabled>Choose...</option>
               <option value="Birthday Banner">Birthday Banner</option>
               <option value="Wedding Card">Wedding Card</option>
               <option value="Festivel Banner">Festivel Banner</option>
               <option value="Logo Design">Logo Design</option>
               <option value="Invitation Card">Invitation Card</option>
               <option value="Menu Card">Menu Card</option>
-              <option value="Visiting Card">Visiting Card</option>
               <option value="Business Card">Business Card</option>
               <option value="Election Card">Election Card</option>
             </select>
           </div>
           <div className="col-md-6 flex">
             <span className="input-group-text">Discount Price</span>
-            <input onChange={inputEvent} name='DiscountPrice' type="number" className="form-control" />
+            <input style={color} onChange={inputEvent} name='DiscountPrice' value={info.DiscountPrice} type="number" className="form-control" />
           </div>
           <div className="col-md-6 flex">
             <span className="input-group-text">Original Price</span>
-            <input onChange={inputEvent} name='OriginalPrice' type="number" className="form-control" />
+            <input style={color} onChange={inputEvent} name='OriginalPrice' value={info.OriginalPrice} type="number" className="form-control" />
           </div>
           <div className="mb-3 col-md-12">
             <label htmlFor="formFile" className="form-label">Upload Image</label>
-            <input onChange={inputEvent} name='image' className="form-control" type="text" placeholder='Enter Image Url....'/>
+            <input style={color} onChange={inputEvent} name='image' value={info.image} className="form-control" type="text" placeholder='Enter Image Url....' />
           </div>
           <div className="form-floating">
-            <textarea onChange={inputEvent} name='description' style={{ height: '100px' }} className="form-control" placeholder="Leave a comment here" id="floatingTextarea2" ></textarea>
+            <textarea style={color} onChange={inputEvent} name='description' value={info.description} className="form-control" placeholder="Leave a comment here" rows="100%" cols="0%" id="floatingTextarea2" ></textarea>
             <label htmlFor="floatingTextarea2">Enter Description here....</label>
           </div>
 

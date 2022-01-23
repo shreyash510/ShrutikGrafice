@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import CardStyle from '../items/CardStyle'
+// import CardStyle from '../items/CardStyle'
 import axios from 'axios';
-import DesignCategoriesTag from './DesignCategoriesTag'
+import { BirthDay, BusinessCard, ElectionCard, FestivelCard, InvitationCard, Logo, MarrageCard, MenuCard } from './TemplateTages';
 
 export default function Templates() {
     const [database, setDatabase] = useState([]);
@@ -19,27 +19,20 @@ export default function Templates() {
         dbData()
     }, [])
     console.log(database)
-
     // const orderNow=(_id)=>{
     //     console.log('button is clicked',_id)
     // }
     return (
         <>
-            <DesignCategoriesTag />
             <div className="flex flex-wrap justify-center">
-                {
-                    database.map((v) => {
-                        return <CardStyle
-                            key={v._id}
-                            id={v._id}
-                            img={v.image}
-                            title={v.title}
-                            DiscountPrice={v.DiscountPrice}
-                            OriginalPrice={v.OriginalPrice}
-                            // onSelect={orderNow}
-                        />
-                    })
-                }
+                <BirthDay />
+                <FestivelCard />
+                <MarrageCard />
+                <MenuCard />
+                <BusinessCard />
+                <InvitationCard />
+                <Logo />
+                <ElectionCard />
             </div>
         </>
     )
