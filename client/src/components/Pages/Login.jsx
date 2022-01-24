@@ -46,17 +46,19 @@ const Login = () => {
         <>
             <div style={color} className="login container my-5 p-4 rounded-2xl border-2 shadow-sm w-[25em]">
                 <p style={msgColor}>{msg}</p>
+                <div className="container pb-2">
+                <h1 className='text-4xl font-bold'>Login</h1>
+                <p className='p-2'>It's quick and easy</p><hr />
+            </div>
                 <form className='pt-3'>
                     <div className="mb-4">
-                        <label className="form-label">Email address</label>
                         <input style={color} type="email" onChange={inputEvent} id='' name="email" placeholder='Enter email...' className="form-control" required/>
                     </div>
                     <div className="mb-4">
-                        <label className="form-label">Password</label>
                         <input style={color} type="password" onChange={inputEvent} name="pass" placeholder='Enter pass...' className="form-control" required/>
                     </div>
-                    <NavLink to="/register" className='text-blue-700 text-center' >Create new account</NavLink>
-                    <NavLink style={{position:'relative', right:'-50px'}} to="/forgot" className='forgot text-blue-700 text-center' >forgot Password</NavLink>
+                    <NavLink to="/register" className='text-blue-700 text-center' >Create new account</NavLink><br />
+                    <NavLink to="/forgot" className='forgot text-blue-700 text-center' >forgot Password</NavLink>
 
                     <div className="col-12 mt-3 ml-4 mr-3">
                         <button onClick={btnClick} className="btn btn-primary">submit</button>
