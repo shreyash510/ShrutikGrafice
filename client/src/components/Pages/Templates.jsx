@@ -24,7 +24,7 @@ export default function Templates() {
     // }
     return (
         <>
-            <div className="flex flex-wrap justify-center">
+            <div className="flex flex-wrap justify-center items-center">
                 <BirthDay />
                 <FestivelCard />
                 <MarrageCard />

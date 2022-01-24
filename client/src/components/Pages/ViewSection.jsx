@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom';
+import CardStyle from '../items/CardStyle';
+
 import axios from 'axios';
 
 const ViewSection = () => {
-    const [pdata, setPdata] = useState([])
+    const [pdata, setPdata] = useState([]);
+    const [database, setDatabase] = useState([]);
 
     const myUrl = useParams()
     console.log(myUrl.id)
@@ -22,7 +25,26 @@ const ViewSection = () => {
         // productData()
     }, [myUrl.id])
 
-    console.log(pdata)
+    console.log(pdata.category)
+
+
+    // call related banner 
+
+    // const dbData = async () => {
+        useEffect(() => {
+        const url = "http://localhost:8000/create-product";
+         axios.get(url)
+            .then((DBdata) => {
+                setDatabase(DBdata.data.filter((v)=>{
+                    return v.category === `${pdata.category}`
+                }))
+            }).catch((e) => {
+                console.log(e)
+            })
+    
+    
+        // dbData()
+    }, [pdata])
     return (
         <>
             <div style={{ width: '100%' }} className="container my-5">
@@ -45,10 +67,28 @@ const ViewSection = () => {
                 </div>
             </div>
             <div className="container">
-                <h1 className='font-bold text-3xl'>Related products</h1>
+                <h1 className='font-bold text-3xl pb-4'>Related products</h1>
+                {
+                    <div className="flex flex-wrap items-center justify-center">
+                    {
+                        database.map((v) => {
+                            return <CardStyle
+                                key={v._id}
+                                id={v._id}
+                                img={v.image}
+                                title={v.title}
+                                DiscountPrice={v.DiscountPrice}
+                                OriginalPrice={v.OriginalPrice}
+                            />
+                        })
+                    })
+                    </div>
+                }
             </div>
         </>
     )
 }
 
 export default ViewSection;
+
+
