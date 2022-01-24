@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import CardStyle from '../items/CardStyle'
 import axios from 'axios';
-
+import Masonry from 'react-masonry-component';
 
 
 const BirthDay = () => {
@@ -20,6 +20,18 @@ const BirthDay = () => {
     useEffect(() => {
         dbData()
     }, [])
+    const masonryOptions = { transitionDuration: 0 }
+    const imagesLoadedOptions = { background: '.my-bg-image-el' }
+    const imageGallery = dbdata.map((v) => {
+        return <CardStyle
+            key={v._id}
+            id={v._id}
+            img={v.image}
+            title={v.title}
+            DiscountPrice={v.DiscountPrice}
+            OriginalPrice={v.OriginalPrice}
+        />
+    })
     // console.log(birthday)
     // const newArray = birthday.filter((v) => {
     //     return v.category === "Wedding Card"       
@@ -27,19 +39,17 @@ const BirthDay = () => {
     console.log(dbdata)
     return (
         <>
-            <div className="flex flex-wrap justify-center">
-            {
-                dbdata.map((v) => {
-                    return <CardStyle
-                        key={v._id}
-                        id={v._id}
-                        img={v.image}
-                        title={v.title}
-                        DiscountPrice={v.DiscountPrice}
-                        OriginalPrice={v.OriginalPrice}
-                    />
-                })
-            }
+            <div className="container">
+                <Masonry
+                    className={'my-gallery-class'}
+                    elementType={'ul'}
+                    options={masonryOptions}
+                    disableImagesLoaded={false}
+                    updateOnEachImageLoad={false}
+                    imagesLoadedOptions={imagesLoadedOptions}
+                >
+                    {imageGallery}
+                </Masonry>
             </div>
         </>
     )
@@ -61,21 +71,31 @@ const FestivelCard = () => {
     useEffect(() => {
         dbData()
     }, [])
+    const masonryOptions = { transitionDuration: 0 }
+    const imagesLoadedOptions = { background: '.my-bg-image-el' }
+    const imageGallery = dbdata.map((v) => {
+        return <CardStyle
+            key={v._id}
+            id={v._id}
+            img={v.image}
+            title={v.title}
+            DiscountPrice={v.DiscountPrice}
+            OriginalPrice={v.OriginalPrice}
+        />
+    })
     return (
         <>
-           <div className="flex flex-wrap justify-center">
-            {
-                dbdata.map((v) => {
-                    return <CardStyle
-                        key={v._id}
-                        id={v._id}
-                        img={v.image}
-                        title={v.title}
-                        DiscountPrice={v.DiscountPrice}
-                        OriginalPrice={v.OriginalPrice}
-                    />
-                })
-            })
+            <div className="container">
+                <Masonry
+                    className={'my-gallery-class'}
+                    elementType={'ul'}
+                    options={masonryOptions}
+                    disableImagesLoaded={false}
+                    updateOnEachImageLoad={false}
+                    imagesLoadedOptions={imagesLoadedOptions}
+                >
+                    {imageGallery}
+                </Masonry>
             </div>
         </>
     )
@@ -97,21 +117,31 @@ const MarrageCard = () => {
     useEffect(() => {
         dbData()
     }, [])
+    const masonryOptions = { transitionDuration: 0 }
+    const imagesLoadedOptions = { background: '.my-bg-image-el' }
+    const imageGallery = dbdata.map((v) => {
+        return <CardStyle
+            key={v._id}
+            id={v._id}
+            img={v.image}
+            title={v.title}
+            DiscountPrice={v.DiscountPrice}
+            OriginalPrice={v.OriginalPrice}
+        />
+    })
     return (
         <>
-             <div className="flex flex-wrap justify-center">
-            {
-                dbdata.map((v) => {
-                    return <CardStyle
-                        key={v._id}
-                        id={v._id}
-                        img={v.image}
-                        title={v.title}
-                        DiscountPrice={v.DiscountPrice}
-                        OriginalPrice={v.OriginalPrice}
-                    />
-                })
-            })
+            <div className="container">
+                <Masonry
+                    className={'my-gallery-class'}
+                    elementType={'ul'}
+                    options={masonryOptions}
+                    disableImagesLoaded={false}
+                    updateOnEachImageLoad={false}
+                    imagesLoadedOptions={imagesLoadedOptions}
+                >
+                    {imageGallery}
+                </Masonry>
             </div>
         </>
     )
@@ -133,21 +163,31 @@ const MenuCard = () => {
     useEffect(() => {
         dbData()
     }, [])
+    const masonryOptions = { transitionDuration: 0 }
+    const imagesLoadedOptions = { background: '.my-bg-image-el' }
+    const imageGallery = dbdata.map((v) => {
+        return <CardStyle
+            key={v._id}
+            id={v._id}
+            img={v.image}
+            title={v.title}
+            DiscountPrice={v.DiscountPrice}
+            OriginalPrice={v.OriginalPrice}
+        />
+    })
     return (
         <>
-             <div className="flex flex-wrap justify-center">
-            {
-                dbdata.map((v) => {
-                    return <CardStyle
-                        key={v._id}
-                        id={v._id}
-                        img={v.image}
-                        title={v.title}
-                        DiscountPrice={v.DiscountPrice}
-                        OriginalPrice={v.OriginalPrice}
-                    />
-                })
-            })
+            <div className="container">
+                <Masonry
+                    className={'my-gallery-class'}
+                    elementType={'ul'}
+                    options={masonryOptions}
+                    disableImagesLoaded={false}
+                    updateOnEachImageLoad={false}
+                    imagesLoadedOptions={imagesLoadedOptions}
+                >
+                    {imageGallery}
+                </Masonry>
             </div>
         </>
     )
@@ -169,21 +209,31 @@ const BusinessCard = () => {
     useEffect(() => {
         dbData()
     }, [])
+    const masonryOptions = { transitionDuration: 0 }
+    const imagesLoadedOptions = { background: '.my-bg-image-el' }
+    const imageGallery = dbdata.map((v) => {
+        return <CardStyle
+            key={v._id}
+            id={v._id}
+            img={v.image}
+            title={v.title}
+            DiscountPrice={v.DiscountPrice}
+            OriginalPrice={v.OriginalPrice}
+        />
+    })
     return (
         <>
-             <div className="flex flex-wrap justify-center">
-            {
-                dbdata.map((v) => {
-                    return <CardStyle
-                        key={v._id}
-                        id={v._id}
-                        img={v.image}
-                        title={v.title}
-                        DiscountPrice={v.DiscountPrice}
-                        OriginalPrice={v.OriginalPrice}
-                    />
-                })
-            })
+            <div className="container">
+                <Masonry
+                    className={'my-gallery-class'}
+                    elementType={'ul'}
+                    options={masonryOptions}
+                    disableImagesLoaded={false}
+                    updateOnEachImageLoad={false}
+                    imagesLoadedOptions={imagesLoadedOptions}
+                >
+                    {imageGallery}
+                </Masonry>
             </div>
         </>
     )
@@ -205,21 +255,31 @@ const InvitationCard = () => {
     useEffect(() => {
         dbData()
     }, [])
+    const masonryOptions = { transitionDuration: 0 }
+    const imagesLoadedOptions = { background: '.my-bg-image-el' }
+    const imageGallery = dbdata.map((v) => {
+        return <CardStyle
+            key={v._id}
+            id={v._id}
+            img={v.image}
+            title={v.title}
+            DiscountPrice={v.DiscountPrice}
+            OriginalPrice={v.OriginalPrice}
+        />
+    })
     return (
         <>
-             <div className="flex flex-wrap justify-center">
-            {
-                dbdata.map((v) => {
-                    return <CardStyle
-                        key={v._id}
-                        id={v._id}
-                        img={v.image}
-                        title={v.title}
-                        DiscountPrice={v.DiscountPrice}
-                        OriginalPrice={v.OriginalPrice}
-                    />
-                })
-            })
+            <div className="container">
+                <Masonry
+                    className={'my-gallery-class'}
+                    elementType={'ul'}
+                    options={masonryOptions}
+                    disableImagesLoaded={false}
+                    updateOnEachImageLoad={false}
+                    imagesLoadedOptions={imagesLoadedOptions}
+                >
+                    {imageGallery}
+                </Masonry>
             </div>
         </>
     )
@@ -241,21 +301,31 @@ const Logo = () => {
     useEffect(() => {
         dbData()
     }, [])
+    const masonryOptions = { transitionDuration: 0 }
+    const imagesLoadedOptions = { background: '.my-bg-image-el' }
+    const imageGallery = dbdata.map((v) => {
+        return <CardStyle
+            key={v._id}
+            id={v._id}
+            img={v.image}
+            title={v.title}
+            DiscountPrice={v.DiscountPrice}
+            OriginalPrice={v.OriginalPrice}
+        />
+    })
     return (
         <>
-             <div className="flex flex-wrap justify-center">
-            {
-                dbdata.map((v) => {
-                    return <CardStyle
-                        key={v._id}
-                        id={v._id}
-                        img={v.image}
-                        title={v.title}
-                        DiscountPrice={v.DiscountPrice}
-                        OriginalPrice={v.OriginalPrice}
-                    />
-                })
-            })
+            <div className="container">
+                <Masonry
+                    className={'my-gallery-class'}
+                    elementType={'ul'}
+                    options={masonryOptions}
+                    disableImagesLoaded={false}
+                    updateOnEachImageLoad={false}
+                    imagesLoadedOptions={imagesLoadedOptions}
+                >
+                    {imageGallery}
+                </Masonry>
             </div>
         </>
     )
@@ -277,21 +347,31 @@ const ElectionCard = () => {
     useEffect(() => {
         dbData()
     }, [])
+    const masonryOptions = { transitionDuration: 0 }
+    const imagesLoadedOptions = { background: '.my-bg-image-el' }
+    const imageGallery = dbdata.map((v) => {
+        return <CardStyle
+            key={v._id}
+            id={v._id}
+            img={v.image}
+            title={v.title}
+            DiscountPrice={v.DiscountPrice}
+            OriginalPrice={v.OriginalPrice}
+        />
+    })
     return (
         <>
-             <div className="flex flex-wrap justify-center">
-            {
-                dbdata.map((v) => {
-                    return <CardStyle
-                        key={v._id}
-                        id={v._id}
-                        img={v.image}
-                        title={v.title}
-                        DiscountPrice={v.DiscountPrice}
-                        OriginalPrice={v.OriginalPrice}
-                    />
-                })
-            })
+            <div className="container">
+                <Masonry
+                    className={'my-gallery-class'}
+                    elementType={'ul'}
+                    options={masonryOptions}
+                    disableImagesLoaded={false}
+                    updateOnEachImageLoad={false}
+                    imagesLoadedOptions={imagesLoadedOptions}
+                >
+                    {imageGallery}
+                </Masonry>
             </div>
         </>
     )

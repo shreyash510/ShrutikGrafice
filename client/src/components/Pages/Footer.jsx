@@ -13,12 +13,12 @@ export default function Footer() {
                             <li className='pr-5'>Contact Us</li>
                         </ul>
                     </div>
-                    <div className="leftside col-md-4">
+                    <div className="leftside col-md-4 py-3">
                         <p className='font-bold text-2xl'>INDIA</p>
-                        <p className='font-medium py-3'>901, Olympia, NH4 Mumbai-Bangalore Highway, Baner, Pune, Maharashtra, India-411045</p>
-                        <p className='font-bold text-xl'>T.: +91 7028632421</p>
+                        <p className='font-medium py-3'>M/p Loni Haweli, Tel. Parner Dist. Ahmednagar State. Maharastra India-414302</p>
+                        <p className='font-bold text-xl'>T.: +91 9561300851</p>
                     </div>
-                    <div className="rightside col-md-4">
+                    <div className="rightside col-md-4 py-3">
                         <p className='font-bold text-2xl'>SOCIAL</p>
                         <p className='font-medium py-3'>Connect with us on LinkedIn, Facebook, Twitter, Instagram or Medium</p>
                     </div>

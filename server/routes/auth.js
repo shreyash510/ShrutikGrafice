@@ -7,6 +7,8 @@ router.use(express.urlencoded({ extended: true }));
 router.use(cors())
 router.use(express.json())
 
+const jwt = require('jsonwebtoken');
+const bcrypt = require('bcryptjs')
 
 router.get('/', (req, res) => {
     res.send("this is router home page");
@@ -19,7 +21,7 @@ router.get('/about', (req, res) => {
 // user register
 router.post('/register', async (req, res) => {
     // console.log(req.body)
-    const { name, email, phone, profession, pass, cpass } = req.body;
+    const { firstname, email, phone, state, pass, cpass, sirname } = req.body;
     // console.log(name)
     const userExist = await UserData.findOne({ email: email })
     try {
@@ -30,7 +32,7 @@ router.post('/register', async (req, res) => {
             // console.log('user already exist')
         } else {
             const userinfo = UserData({
-                name, email, phone, profession, pass, cpass
+                firstname, state, email, phone, pass, cpass, sirname
             })
 
             // console.log(userinfo);
@@ -58,6 +60,14 @@ router.post("/login", async (req, res) => {
         // console.log(email)
         const newData = await UserData.findOne({ email: email, pass: pass });
         if (newData) {
+            const token = await newData.generateAuthToken();
+            console.log(token)  
+            
+            res.cookie("jwtToken", token,{
+                expires: new Date(Date.now()+5000000000),
+                httpOnly:true
+            })
+
             res.status(200).json({
                 message: 'user login successfully'
             })

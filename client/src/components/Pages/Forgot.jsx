@@ -53,9 +53,13 @@ const Forgot = () => {
         <>
             <div className="forgot container my-5 p-4 rounded-2xl border-2 shadow-sm w-[25em]">
             <p style={msgColor}>{msg}</p>
+            <div className="container pb-2">
+                <h1 className='text-4xl font-bold pb-3'>Forgot Password</h1>
+                <hr />
+            </div>
                 <form className='pt-3'>
                     <div className="mb-4">
-                        <label className="form-label">Email address</label>
+                        <label className="form-label">Please enter your email address to search for your account</label>
                         <input type="email" style={borderColor} onChange={inputevent} name="email" placeholder='Enter Email here...' className="form-control" required />
                     </div>
                     <div style={hide} className="password">

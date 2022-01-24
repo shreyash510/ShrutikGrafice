@@ -1,10 +1,14 @@
 const mongoose = require('mongoose');
 const jwt = require('jsonwebtoken');
-// const dotenv = require("dotenv");
-// const tok = dotenv.config({path: './src/config.env'});
+const dotenv = require("dotenv");
+const tok = dotenv.config({path: './src/config.env'});
 // console.log(tok)
 const userSchema = new mongoose.Schema({
-    name: {
+    firstname: {
+        type: String,
+        required: true
+    },
+    sirname: {
         type: String,
         required: true
     },
@@ -17,7 +21,7 @@ const userSchema = new mongoose.Schema({
         type: Number,
         required: true
     },
-    profession: {
+    state: {
         type: String,
         required: true
     },
