@@ -39,7 +39,7 @@ const BirthDay = () => {
                         OriginalPrice={v.OriginalPrice}
                     />
                 })
-            })
+            }
             </div>
         </>
     )

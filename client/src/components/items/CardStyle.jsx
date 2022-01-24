@@ -7,7 +7,7 @@ export default function CardStyle(props) {
     return (
         <>
 
-            <div style={{ height: "fit-content" }} className="bannerList w-[14em] m-2 rounded-2xl shadow-lg ">
+            <div style={{ height: "fit-content" }} className="bannerList w-[14em] m-2 rounded-2xl shadow-lg">
                 <div className="card1 rounded-2xl h-full rounded overflow-hidden">
                     <div className="img w-[100%] h-auto">
                         <img className='rounded-2xl' src={props.img} alt="BannerImage" />

@@ -26,7 +26,7 @@ export default function Home() {
                 <HomeDemo />
                 <p className='text-3xl py-4 font-bold'>Popular Templates</p>
             </div>
-            <div className="flex flex-wrap justify-center">
+            <div className="container flex flex-wrap justify-center">
                 {
                     database.map((v) => {
                         return <CardStyle
