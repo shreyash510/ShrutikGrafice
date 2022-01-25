@@ -8,7 +8,9 @@ router.use(cors())
 router.use(express.json())
 
 const jwt = require('jsonwebtoken');
-const bcrypt = require('bcryptjs')
+// router.use(jwt())
+const cookieParser = require('cookie-parser')
+router.use(cookieParser());
 
 router.get('/', (req, res) => {
     res.send("this is router home page");
@@ -61,16 +63,11 @@ router.post("/login", async (req, res) => {
         const newData = await UserData.findOne({ email: email, pass: pass });
         if (newData) {
             const token = await newData.generateAuthToken();
-            console.log(token)  
-            
-            res.cookie("jwtToken", token,{
-                expires: new Date(Date.now()+5000000000),
-                httpOnly:true
-            })
-
+            console.log(token) 
             res.status(200).json({
                 message: 'user login successfully'
             })
+            res.cookie('Tokens', 'express').console.log('cookie send')
         } else {
             res.json({
                 error: 'Please Enter valid email and Password'
@@ -80,6 +77,11 @@ router.post("/login", async (req, res) => {
         console.log('Login failed!')
     }
 })
+
+// router.post('/login', (req, res)=>{
+//   res.send('this is router login page')
+//   res.cookie('first', 'this is cookie').send('cookie save')
+// })
 
 // user forgot password
 router.post('/forgot', async (req, res) => {
@@ -131,9 +133,10 @@ router.post('/forgot', async (req, res) => {
     // }
 })
 router.get('/create-product', async (req, res)=>{
-    try{
+    try{ 
         const productData = await AdminData.find();
         res.send(productData)
+        res.cookie('jwtToken', 'token'); 
     }catch(e){
         console.log(e)
     }
