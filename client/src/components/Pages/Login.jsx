@@ -29,7 +29,7 @@ const Login = () => {
                 .then((res)=>{
                     const msgData = res.data.message;
                     (msgData)? setMsg(res.data.message) || setMsgColor({color:'green',fontWeigth:'bold'}) ||  setColor({borderColor:'green'})
-                    //  || setTimeout(()=>{navigater('/',2000)})
+                     || setTimeout(()=>{navigater('/',2000)})
                       :
                      setMsg(res.data.error) || setColor({borderColor:'red'})|| setMsgColor({color:'red',fontWeigth:'bold'});
                 })
