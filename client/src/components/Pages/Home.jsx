@@ -38,7 +38,7 @@ export default function Home() {
                 <HomeDemo />
                 <p className='text-3xl py-4 font-bold'>Popular Templates</p>
             </div>
-            <div className="container">
+            <div className="container pl-[4%]">
                 <Masonry
                     className={'my-gallery-class'}
                     elementType={'ul'}
