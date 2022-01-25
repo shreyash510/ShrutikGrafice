@@ -28,7 +28,9 @@ const Login = () => {
             axios.post(url, info)
                 .then((res)=>{
                     const msgData = res.data.message;
-                    (msgData)? setMsg(res.data.message) || setMsgColor({color:'green',fontWeigth:'bold'}) ||  setColor({borderColor:'green'}) || setTimeout(()=>{navigater('/',2000)}) :
+                    (msgData)? setMsg(res.data.message) || setMsgColor({color:'green',fontWeigth:'bold'}) ||  setColor({borderColor:'green'})
+                     || setTimeout(()=>{navigater('/',2000)})
+                      :
                      setMsg(res.data.error) || setColor({borderColor:'red'})|| setMsgColor({color:'red',fontWeigth:'bold'});
                 })
                 .catch((e) => {

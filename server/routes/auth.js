@@ -62,13 +62,10 @@ router.post("/login", async (req, res) => {
         // console.log(email)
         const newData = await UserData.findOne({ email: email, pass: pass });
         if (newData) {
+            res.setHeader("Content-Type", "text/html");
             res.status(200).json({
                 message: 'user login successfully'
-            })            
-            // const token = await newData.generateAuthToken();
-            // console.log(token) 
-            // res.cookie('first', token).send('cookie post request')
-            // console.log(req.cookies)
+            })
         } else {
             res.json({
                 error: 'Please Enter valid email and Password'
@@ -78,12 +75,6 @@ router.post("/login", async (req, res) => {
         console.log('Login failed!')
     }
 })
-
-// router.post('/login', (req, res)=>{
-//   res.json('this is router login page')
-//   res.cookie('first', '523456').send('cookie post request')
-// console.log(req.cookies)
-// })
 
 // user forgot password
 router.post('/forgot', async (req, res) => {
@@ -134,52 +125,52 @@ router.post('/forgot', async (req, res) => {
     //     console.log(e)
     // }
 })
-router.get('/create-product', async (req, res)=>{
-    try{ 
+router.get('/create-product', async (req, res) => {
+    try {
         const productData = await AdminData.find();
         res.send(productData)
-        res.cookie('jwtToken', 'token'); 
-    }catch(e){
+        res.cookie('jwtToken', 'token');
+    } catch (e) {
         console.log(e)
     }
 })
 
-router.get("/create-product/:id", async (req, res)=>{
-    try{
+router.get("/create-product/:id", async (req, res) => {
+    try {
         const _id = req.params.id;
         // console.log(_id)
         const bannderData = await AdminData.findById(_id);
 
-        if(!bannderData){
+        if (!bannderData) {
             return res.status(404).send();
-        }else{
+        } else {
             res.send(bannderData);
         }
-    }catch(e){
+    } catch (e) {
         console.log(e);
     }
 })
 
 router.post('/create-product', async (req, res) => {
-   try{
-        const {title, DiscountPrice, OriginalPrice, category,description,image} = req.body
+    try {
+        const { title, DiscountPrice, OriginalPrice, category, description, image } = req.body
         // console.log(title, DiscountPrice, OriginalPrice, category,description,image)
-        const productData =  AdminData({
-            title, DiscountPrice, OriginalPrice, category,description,image
+        const productData = AdminData({
+            title, DiscountPrice, OriginalPrice, category, description, image
         })
-        if(productData){
+        if (productData) {
             productData.save().then(
                 res.json({
                     message: 'Product successfully inserted'
                 })
-            ).catch(e=>console.log(e))
-        }else{
+            ).catch(e => console.log(e))
+        } else {
             res.json({
                 error: 'Product insertion Failed'
             })
         }
     }
-    catch(e){console.log(e)}
+    catch (e) { console.log(e) }
 })
 
 module.exports = router;
