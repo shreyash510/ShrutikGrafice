@@ -30,7 +30,7 @@ const Register = () => {
             setColor({ borderColor: 'red' })
             // alert('fill full form!')
         } else if (pass === cpass) {
-            const url = 'http://localhost:8000/register';
+            const url = '/register';
             axios.post(url, info)
                 .then((res) => {
                     const msgData = res.data.message;

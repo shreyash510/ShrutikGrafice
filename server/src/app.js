@@ -16,9 +16,10 @@ app.get('/login', (req, res)=>{
     res.send('this is login page');
 })
 
-// app.get('/register', (req, res)=>{
-//     res.send('this is register page');
-// })
+app.post('/contact', (req, res)=>{
+    res.cookie('test', 'this is test cookie')
+    res.send('this is contact page');
+})
 
 app.listen(8000,(err)=>{
     console.log(`listening at: ${port}....`)

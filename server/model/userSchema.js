@@ -2,6 +2,8 @@ const mongoose = require('mongoose');
 const jwt = require('jsonwebtoken');
 const dotenv = require("dotenv");
 const tok = dotenv.config({path: './src/config.env'});
+const bcrypt = require('bcryptjs');
+
 // console.log(tok)
 const userSchema = new mongoose.Schema({
     firstname: {
@@ -45,9 +47,20 @@ const userSchema = new mongoose.Schema({
     }]
 })
 
+//password Hashing 
+userSchema.pre('save', async function (next){
+    if(this.isModified('pass')){
+        this.pass = await bcrypt.hash(this.pass, 12);
+        this.cpass = await bcrypt.hash(this.cpass, 12);
+    }
+    next();
+})
+
+
 // genrate user token Id 
 userSchema.methods.generateAuthToken = async function(){
     try{
+        // jwt.sign(payload,secrete key) ...............genrate token key 
         let newToken = jwt.sign({_id: this._id}, process.env.SECRET_KEY);
         this.tokens = this.tokens.concat({token: newToken});
         await this.save();
@@ -56,7 +69,6 @@ userSchema.methods.generateAuthToken = async function(){
         console.log(e);
     }
 }
-
 
 const UserData = mongoose.model('USER', userSchema);
 module.exports = UserData;

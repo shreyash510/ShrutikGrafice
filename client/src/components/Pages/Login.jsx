@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { NavLink, useNavigate } from 'react-router-dom';
+axios.defaults.withCredentials = true
+
 import ('../styling/register.css')
 
 
@@ -24,9 +26,10 @@ const Login = () => {
         e.preventDefault()
         const { email, pass } = info;
         if (email && pass) {
-            const url = 'http://localhost:8000/login';
+            const url = '/login';
             axios.post(url, info)
                 .then((res)=>{
+                    // console.log(res)
                     const msgData = res.data.message;
                     (msgData)? setMsg(res.data.message) || setMsgColor({color:'green',fontWeigth:'bold'}) ||  setColor({borderColor:'green'})
                      || setTimeout(()=>{navigater('/',2000)})

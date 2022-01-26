@@ -7,7 +7,7 @@ import Masonry from 'react-masonry-component';
 const BirthDay = () => {
     const [dbdata, setDBdata] = useState([]);
     const dbData = async () => {
-        const url = "http://localhost:8000/create-product";
+        const url = "/create-product";
         await axios.get(url)
             .then((DBdata) => {
                 setDBdata(DBdata.data.filter((v) => {
@@ -58,7 +58,7 @@ const BirthDay = () => {
 const FestivelCard = () => {
     const [dbdata, setDBdata] = useState([]);
     const dbData = async () => {
-        const url = "http://localhost:8000/create-product";
+        const url = "/create-product";
         await axios.get(url)
             .then((DBdata) => {
                 setDBdata(DBdata.data.filter((v) => {
@@ -104,7 +104,7 @@ const FestivelCard = () => {
 const MarrageCard = () => {
     const [dbdata, setDBdata] = useState([]);
     const dbData = async () => {
-        const url = "http://localhost:8000/create-product";
+        const url = "/create-product";
         await axios.get(url)
             .then((DBdata) => {
                 setDBdata(DBdata.data.filter((v) => {
@@ -150,7 +150,7 @@ const MarrageCard = () => {
 const MenuCard = () => {
     const [dbdata, setDBdata] = useState([]);
     const dbData = async () => {
-        const url = "http://localhost:8000/create-product";
+        const url = "/create-product";
         await axios.get(url)
             .then((DBdata) => {
                 setDBdata(DBdata.data.filter((v) => {
@@ -196,7 +196,7 @@ const MenuCard = () => {
 const BusinessCard = () => {
     const [dbdata, setDBdata] = useState([]);
     const dbData = async () => {
-        const url = "http://localhost:8000/create-product";
+        const url = "/create-product";
         await axios.get(url)
             .then((DBdata) => {
                 setDBdata(DBdata.data.filter((v) => {
@@ -242,7 +242,7 @@ const BusinessCard = () => {
 const InvitationCard = () => {
     const [dbdata, setDBdata] = useState([]);
     const dbData = async () => {
-        const url = "http://localhost:8000/create-product";
+        const url = "/create-product";
         await axios.get(url)
             .then((DBdata) => {
                 setDBdata(DBdata.data.filter((v) => {
@@ -288,7 +288,7 @@ const InvitationCard = () => {
 const Logo = () => {
     const [dbdata, setDBdata] = useState([]);
     const dbData = async () => {
-        const url = "http://localhost:8000/create-product";
+        const url = "/create-product";
         await axios.get(url)
             .then((DBdata) => {
                 setDBdata(DBdata.data.filter((v) => {
@@ -334,7 +334,7 @@ const Logo = () => {
 const ElectionCard = () => {
     const [dbdata, setDBdata] = useState([]);
     const dbData = async () => {
-        const url = "http://localhost:8000/create-product";
+        const url = "/create-product";
         await axios.get(url)
             .then((DBdata) => {
                 setDBdata(DBdata.data.filter((v) => {
