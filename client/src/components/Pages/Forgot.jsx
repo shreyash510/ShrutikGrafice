@@ -36,7 +36,7 @@ const Forgot = () => {
             setMsgColor({color:'red'})
             setBorderColor({borderColor:'red'})
         } else {
-            const url = 'http://localhost:8000/forgot';
+            const url = '/forgot';
             axios.post(url, info)
                 .then((res) => {
                     const msgData = res.data.message;

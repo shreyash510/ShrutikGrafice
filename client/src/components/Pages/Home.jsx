@@ -8,7 +8,7 @@ export default function Home() {
     const [database, setDatabase] = useState([])
 
     const dbData = async () => {
-        const url = "http://localhost:8000/create-product";
+        const url = "/create-product";
         await axios.get(url)
             .then((DBdata) => {
                 setDatabase(DBdata.data)

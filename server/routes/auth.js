@@ -3,6 +3,7 @@ const router = express.Router();
 const UserData = require('../model/userSchema');
 const AdminData = require('../model/adminSchema');
 const cors = require('cors')
+const bcrypt = require('bcryptjs')
 router.use(express.urlencoded({ extended: true }));
 router.use(cors())
 router.use(express.json())
@@ -11,6 +12,8 @@ const jwt = require('jsonwebtoken');
 // router.use(jwt())
 const cookieParser = require('cookie-parser')
 router.use(cookieParser());
+
+
 
 router.get('/', (req, res) => {
     res.send("this is router home page");
@@ -59,18 +62,34 @@ router.post('/register', async (req, res) => {
 router.post("/login", async (req, res) => {
     try {
         const { email, pass } = req.body
-        const newData = await UserData.findOne({ email: email, pass: pass });
-        if (newData) {
-            return res.status(200).json({
-                message: 'user login successfully'
+        const userLogin = await UserData.findOne({ email: email });
+        if (userLogin) {
+            const isMatch = await bcrypt.compare(pass, userLogin.pass);
+
+            const token = await userLogin.generateAuthToken();
+            // console.log(token)
+
+            res.cookie('jwtoken', token,{
+                expires: new Date(Date.now()+ 25892000000),
+                httpOnly:true
             })
+            
+            if (!isMatch) {
+                res.status(200).json({
+                    error : 'Please Enter valid email and Password'
+                })
+            } else {
+                res.status(200).json({
+                    message: 'User Successfully Login'
+                })
+            }
         } else {
             return res.status(400).json({
-                error: 'Please Enter valid email and Password'
+                error: 'Invalid Creadients'
             })
         }
     } catch (e) {
-        console.log('Login failed!')
+        console.log(e)
     }
 })
 
@@ -170,4 +189,8 @@ router.post('/create-product', async (req, res) => {
     catch (e) { console.log(e) }
 })
 
+router.get('/about', (req, res)=>{
+    console.log('hello my about')
+    res.send('hello about world form the server')
+} )
 module.exports = router;

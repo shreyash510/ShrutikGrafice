@@ -32,7 +32,7 @@ const ViewSection = () => {
 
     // const dbData = async () => {
         useEffect(() => {
-        const url = "http://localhost:8000/create-product";
+        const url = "/create-product";
          axios.get(url)
             .then((DBdata) => {
                 setDatabase(DBdata.data.filter((v)=>{
