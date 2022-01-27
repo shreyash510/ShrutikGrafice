@@ -13,15 +13,12 @@ const jwt = require('jsonwebtoken');
 const cookieParser = require('cookie-parser')
 router.use(cookieParser());
 
-
+const Authentification = require("../middleware/authentification")
 
 router.get('/', (req, res) => {
     res.send("this is router home page");
 });
 
-router.get('/about', (req, res) => {
-    res.send("this is router about page")
-})
 
 // user register
 router.post('/register', async (req, res) => {
@@ -189,8 +186,8 @@ router.post('/create-product', async (req, res) => {
     catch (e) { console.log(e) }
 })
 
-router.get('/about', (req, res)=>{
-    console.log('hello my about')
-    res.send('hello about world form the server')
+router.get('/about', Authentification, (req, res)=>{
+    console.log('hello this is about page')
+    // res.send(req.rootUser)
 } )
 module.exports = router;
