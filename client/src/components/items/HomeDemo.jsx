@@ -1,6 +1,8 @@
-import React from 'react'
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export default function HomeDemo() {
+    const navigator = useNavigate()
     return (
         <>
 
@@ -13,7 +15,11 @@ export default function HomeDemo() {
                         <h3 className='font-bold text-2xl p-3 text-center' >skGraphics Creative Cloud Express</h3>
                         <h1 className='font-bold text-5xl text-center pb-4' >Shrutik Kolhe Graphics</h1>
                         <p className='text-center font-medium'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi cumque corporis voluptate maiores illum tenetur consequatur numquam obcaecati blanditiis aspernatur quia porro hic ipsam dolores optio et, ut dicta ex praesentium </p>
-                        <button className="btn btn-primary my-4">Create Banner Now</button>
+                        <button onClick={
+                            ()=>{
+                                navigator('/Login')
+                            }
+                        } className="btn btn-primary my-4">Create Banner Now</button>
                     </div>
 
                 </div>

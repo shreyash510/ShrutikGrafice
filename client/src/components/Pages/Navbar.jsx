@@ -43,36 +43,21 @@ useEffect(() => {
                         <Link to="/templates" style={{fontWeight: '600',fontSize:'15px'}} className="nav-link px-3">Templates</Link>
                     </li>
                     <li className="nav-item">
-                        <Link to="/about" style={{fontWeight: '600',fontSize:'15px'}} className="nav-link px-3">WishList</Link>
+                        <Link to="/wishlist" style={{fontWeight: '600',fontSize:'15px'}} className="nav-link px-3">WishList</Link>
                     </li>
                     <li className="nav-item">
-                        <Link to="/contact" style={{fontWeight: '600',fontSize:'15px'}} className="nav-link px-3">Cart</Link>
+                        <Link to="/cart" style={{fontWeight: '600',fontSize:'15px'}} className="nav-link px-3">Cart</Link>
                     </li>
                     <li class="nav-item dropdown">
                     <Link style={{fontWeight: '600',fontSize:'15px'}} class="nav-link dropdown-toggle" to="/" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     Hello, {DBdata.data.firstname}
                     </Link>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><Link class="dropdown-item" to="/">Profile</Link></li>
-                        <li><Link class="dropdown-item" to="/">About</Link></li>
-                        <li><Link class="dropdown-item" to="/">Contact</Link></li>
+                        <li><Link class="dropdown-item" to="/profile">Profile</Link></li>
+                        <li><Link class="dropdown-item" to="/contact">Contact</Link></li>
                         <li><Link class="dropdown-item" to="/">LogOut</Link></li>
                     </ul>
-                    </li>
-                    {/* <div style={{marginTop: '-7px'}} className="btn">
-                        <li className="nav-item dropdown">
-                        <Link style={{fontWeight: '600',fontSize:'15px'}} className="nav-link dropdown-toggle" to="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            {DBdata.data}
-                        </Link>
-                        <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><Link className="dropdown-item" to="#">Profile</Link></li>
-                            <li><Link className="dropdown-item" to="#">About</Link></li>
-                            <li><Link className="dropdown-item" to="#">Contact</Link></li>
-                            <li><Link className="dropdown-item" to="#">LogOut</Link></li>
-                        </ul>
-                        </li>
-                </div> */}
-                    {/* {navData} */}
+                    </li>                   
                 </ul>
             </div>)
             }).catch((e) => {
