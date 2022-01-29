@@ -14,6 +14,8 @@ import CreateProduct from '../Pages/AdminSide/CreateProduct';
 import Forgot from '../Pages/Forgot';
 import { BirthDay, BusinessCard, ElectionCard, FestivelCard, InvitationCard, Logo, MarrageCard, MenuCard } from '../Pages/TemplateTages';
 import ErrorPage from '../Pages/ErrorPage';
+import { Logout } from '../Pages/About';
+import { Cart, Profile } from '../Pages/Profile';
 
 export default function RouterMenu() {
     return (
@@ -29,11 +31,9 @@ export default function RouterMenu() {
                 <Route path="/forgot" element={<Forgot />} />
                 <Route path="*" element={<ErrorPage/>}/>
 
-
                 <Route path="/admin" element={<Admin />} />
                 <Route path="/admin/orders" element={<Orders />} />
                 <Route path="/admin/create-items" element={<CreateProduct />} />
-
 
                 <Route path="/templates/birthday" element={<BirthDay/>}></Route>
                 <Route path="/templates/festivel" element={<FestivelCard/>}></Route>
@@ -43,6 +43,10 @@ export default function RouterMenu() {
                 <Route path="/templates/menu" element={<MenuCard/>}></Route>
                 <Route path="/templates/business" element={<BusinessCard/>}></Route>
                 <Route path="/templates/election" element={<ElectionCard/>}></Route>
+
+                <Route path="/logout" element={<Logout/>}/>
+                <Route path="/cart" element={<Cart/>}/>
+                <Route path="/profile" element={<Profile/>}/>
             </Routes>
 
             

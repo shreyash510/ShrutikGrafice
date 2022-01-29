@@ -31,8 +31,7 @@ const Login = () => {
                 .then((res)=>{
                     // console.log(res)
                     const msgData = res.data.message;
-                    (msgData)? setMsg(res.data.message) || setMsgColor({color:'green',fontWeigth:'bold'}) ||  setColor({borderColor:'green'})
-                     || setTimeout(()=>{navigater('/',2000)})
+                    (msgData)? setMsg(res.data.message) || setMsgColor({color:'green',fontWeigth:'bold'}) || setColor({borderColor:'green'}) || setTimeout(()=>{navigater('/',1000)})
                       :
                      setMsg(res.data.error) || setColor({borderColor:'red'})|| setMsgColor({color:'red',fontWeigth:'bold'});
                 })

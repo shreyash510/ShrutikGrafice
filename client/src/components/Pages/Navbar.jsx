@@ -43,19 +43,16 @@ useEffect(() => {
                         <Link to="/templates" style={{fontWeight: '600',fontSize:'15px'}} className="nav-link px-3">Templates</Link>
                     </li>
                     <li className="nav-item">
-                        <Link to="/wishlist" style={{fontWeight: '600',fontSize:'15px'}} className="nav-link px-3">WishList</Link>
-                    </li>
-                    <li className="nav-item">
                         <Link to="/cart" style={{fontWeight: '600',fontSize:'15px'}} className="nav-link px-3">Cart</Link>
                     </li>
-                    <li class="nav-item dropdown">
-                    <Link style={{fontWeight: '600',fontSize:'15px'}} class="nav-link dropdown-toggle" to="/" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <li className="nav-item dropdown">
+                    <Link style={{fontWeight: '600',fontSize:'15px'}} className="nav-link dropdown-toggle" to="/" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     Hello, {DBdata.data.firstname}
                     </Link>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><Link class="dropdown-item" to="/profile">Profile</Link></li>
-                        <li><Link class="dropdown-item" to="/contact">Contact</Link></li>
-                        <li><Link class="dropdown-item" to="/">LogOut</Link></li>
+                    <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><Link className="dropdown-item" to="/profile">Profile</Link></li>
+                        <li><Link className="dropdown-item" to="/contact">Contact</Link></li>
+                        <li><Link className="dropdown-item" to="/logout">LogOut</Link></li>
                     </ul>
                     </li>                   
                 </ul>

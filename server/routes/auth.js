@@ -191,6 +191,11 @@ router.get('/about', authentification, (req, res)=>{
     res.send(req.rootUser)
 })
 
+router.get('/view', authentification, (req, res)=>{
+    // res.json('hello this is about page')
+    res.send(req.rootUser)
+})
+
 router.get('/logout', authentification, (req, res)=>{
     res.clearCookie('jwtoken', path="/")
     res.status(200).send('user logout')
