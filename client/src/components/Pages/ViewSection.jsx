@@ -5,16 +5,13 @@ import Masonry from 'react-masonry-component';
 
 
 import axios from 'axios';
-
+const cartProduct = []
 const ViewSection = () => {
     const [pdata, setPdata] = useState([]);
     const [database, setDatabase] = useState([]);
 
     const navigator = useNavigate();
     const myUrl = useParams()
-    useEffect(()=>{
-        console.log(myUrl.id)
-    },[])
 
     useEffect(() => {
         const url = '/view'
@@ -71,7 +68,7 @@ const ViewSection = () => {
 
     return (
         <>
-            <div style={{ width: '100%' }} className="container my-5">
+            <div id='showData' style={{ width: '100%' }} className="container my-5">
                 <div className="container row g-3 flex justify-center items-center">
                     <div className="col-md-5 flex justify-center">
                         <img className='rounded-2xl w-[25em]' src={pdata.image} alt="BannerImage" />

@@ -34,7 +34,7 @@ function Cart() {
         <div className="left col-md-5">
           <div className="card m-3 p-3 rounded-2xl">
             <p className=''>Your order is eligible for FREE Delivery. Select this option at checkout. Details</p>
-            <h1 className='text-2xl font-bold my-3 py-4'>Subtotal (1 item):   3,499.00</h1>
+            <h1 className='text-2xl font-bold my-3 py-4'>Subtotal (1 item): 3,499.00</h1>
             <button className="btn btn-primary">Proceed to Buy</button>
           </div>
         </div>

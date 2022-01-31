@@ -1,9 +1,13 @@
 img:hover{
     filter: brightness(0.3);
 }
-@media (max-width:340px) {
-    .bannerList{
+@media (max-width:500px) {
+    /* .bannerList{
         width: 100%;
         transition-duration:4s;
+    } */
+    .bannerList{
+        width: 8em;
+        height: auto;
     }
 }   
