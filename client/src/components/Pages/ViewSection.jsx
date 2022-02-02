@@ -5,7 +5,7 @@ import Masonry from 'react-masonry-component';
 
 
 import axios from 'axios';
-const cartProduct = []
+let cartData = [];
 const ViewSection = () => {
     const [pdata, setPdata] = useState([]);
     const [database, setDatabase] = useState([]);
@@ -53,11 +53,24 @@ const ViewSection = () => {
 
     }, [pdata])
 
+    const cart = () => {
+        const Cdata = JSON.parse(localStorage.getItem('Cart'))
+        // console.log(Cdata)
+        if (Cdata === pdata.id) {
+            alert('already added in cart')
+        } else {
+            cartData.push(pdata._id)
+            localStorage.setItem('Cart', JSON.stringify(cartData))
+            alert('product add successfully')
+        }
+        console.log(cartData)
+    }
+
     const masonryOptions = { transitionDuration: 0 }
     const imagesLoadedOptions = { background: '.my-bg-image-el' }
-    const imageGallery = database.map((v) => {
+    const imageGallery = database.map((v,i) => {
         return <CardStyle
-            key={v._id}
+            key={i}
             id={v._id}
             img={v.image}
             title={v.title}
@@ -81,7 +94,7 @@ const ViewSection = () => {
                         {/* </div> */}
                         <p className='text-center font-medium'>{pdata.description}</p>
                         <div className="btn flex justify-around">
-                            <button className="btn btn-primary py-2 my-3 mx-1">Add To Cart</button>
+                            <button onClick={cart} className="btn btn-primary py-2 my-3 mx-1">Add To Cart</button>
                             <button className="btn btn-primary py-2 my-3 mx-1">Order Now</button>
                         </div>
                     </div>

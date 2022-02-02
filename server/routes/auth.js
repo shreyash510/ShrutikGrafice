@@ -200,4 +200,20 @@ router.get('/logout', authentification, (req, res)=>{
     res.clearCookie('jwtoken', path="/")
     res.status(200).send('user logout')
 })
+
+router.get("/cart/:id", async (req, res) => {
+    try {
+        const _id = req.params.id;
+        // console.log(_id)
+        const cartData = await AdminData.findById(_id);
+        if (!cartData) {
+            return res.status(404).send();
+        } else {
+            return res.send(cartData);
+        }
+    } catch (e) {
+        console.log(e);
+    }
+})
+
 module.exports = router;
