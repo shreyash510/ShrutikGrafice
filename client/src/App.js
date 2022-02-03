@@ -30,7 +30,7 @@ function App() {
       {
         (AdminPath === '/admin'|| AdminPath === '/admin/create-items'  ||
          AdminPath === '/admin/orders'|| AdminPath === '/register'||
-          AdminPath === '/login'|| AdminPath === '/forgot') ? null  :< Footer/>
+          AdminPath === '/login'|| AdminPath === '/forgot' || AdminPath === '/profile') ? null  :< Footer/>
       } 
       {/* < Footer/> */}
     </>

@@ -28,7 +28,7 @@ return (
       <div style={{ width: '70%' }} className="info m-2">
         <h1 className='text-1xl font-bold'>{props.title}</h1>
         <p className='text-2xl font-bold'>Price: {props.price}/-</p>
-        <button className="btn btn-primary my-2">Delete</button>
+        <button id="delBtn" onClick={() => props.delete(props.id)} className="btn btn-primary my-2">Delete</button>
       </div>
     </div>
   </>

@@ -1,10 +1,9 @@
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios';
-import CartStyle from '../items/CartStyle'
-import { useState } from 'react';
 
-function Profile() {
+
+const Profile=()=> {
   const navigator = useNavigate()
 
   useEffect(() => {
@@ -23,73 +22,29 @@ function Profile() {
   }, [navigator])
   return (
     <>
-      <h1>This is Profile Page</h1>
-    </>
-  )
-}
-
-function Cart() {
-  const sum = 0;
-  const [data, setData] = useState([])
-  useEffect(() => {
-    const data = JSON.parse(localStorage.getItem('Cart'));
-    if (!data) {
-      console.log('go to empty Cart')
-    } else {
-      data.map(async (v) => {
-        try {
-          axios.get(`/cart/${v}`)
-            .then((res) => {
-              return setData((preV) => {
-                return [...preV, res.data]
-              })
-            })
-            .catch(e => { console.log(e) })
-        } catch (e) {
-          console.log(e);
-          navigator('/Login');
-        }
-      })
-    }
-  }, [])
-
-  
-  return (
-    <>
-      <div className=" cartStyle row g-3">
+    <div className="container w-50">
+      <div className=" my-4 row g-3 p-4 rounded-2xl border-2 shadow-sm flex">
         <div className="left col-md-4">
-          <div className="card m-3 p-3 rounded-2xl">
-            <p className=''>Your order is eligible for FREE Delivery. Select this option at checkout. Details</p>
-            <div className="priceCal flex flex-col items-center">
-              <p style={{ fontSize: '1.5em' }} className='font-medium pt-3'>Total items: </p>
-              {
-                data.map((v, i)=>{
-                  return <p key={i} className='font-bold text-xl'>Rs. {v.DiscountPrice}</p>
-                })
-              }
-            </div>
-            <h1 className='text-3xl py-3 font-bold '>Total :{sum} .00</h1>
-            <button className="btn btn-primary">Proceed to Buy</button>
+          <div className="imgsection w-40">
+            <img  style={{borderRadius:'50%'}} src="https://i.ibb.co/KXFgpRc/undraw-male-avatar-323b.png" alt="profile page" />
           </div>
         </div>
-        <div className="right col-md-8 flex flex-wrap justify-around">
+        <div className="right col-md-8">
+          <div className="imf">
+              <h1 className='text-4xl font-bold'>Shreyash Kolhe</h1>
+              <h1 className='text-2xl py-2 font-bold'>shreyashkolhe2001@gmail.com</h1>
+              <h1 className='text-2xl py-2 font-bold'>9561300851</h1>
+              <h1 className='text-2xl py-2 font-bold'>Maharastra</h1>
 
-          {
-            data.map((v, i) => {
-              return <CartStyle
-                key={i}
-                title={v.title}
-                price={v.DiscountPrice}
-                img={v.image}
-              />
-            })
-
-          }
+          </div>
         </div>
+      </div>
       </div>
     </>
   )
 }
 
 
-export { Profile, Cart };
+
+
+export default Profile;

@@ -15,7 +15,8 @@ import Forgot from '../Pages/Forgot';
 import { BirthDay, BusinessCard, ElectionCard, FestivelCard, InvitationCard, Logo, MarrageCard, MenuCard } from '../Pages/TemplateTages';
 import ErrorPage from '../Pages/ErrorPage';
 import { Logout } from '../Pages/About';
-import { Cart, Profile } from '../Pages/Profile';
+import Profile from '../Pages/Profile';
+import Cart from '../Pages/Cart';
 
 export default function RouterMenu() {
     return (
