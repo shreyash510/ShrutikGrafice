@@ -35,7 +35,6 @@ const Profile=()=> {
               <h1 className='text-2xl py-2 font-bold'>shreyashkolhe2001@gmail.com</h1>
               <h1 className='text-2xl py-2 font-bold'>9561300851</h1>
               <h1 className='text-2xl py-2 font-bold'>Maharastra</h1>
-
           </div>
         </div>
       </div>

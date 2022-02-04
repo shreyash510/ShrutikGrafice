@@ -55,20 +55,30 @@ const ViewSection = () => {
 
     const cart = () => {
         const Cdata = JSON.parse(localStorage.getItem('Cart'))
-        // console.log(Cdata)
         if (Cdata === pdata.id) {
             alert('already added in cart')
         } else {
             cartData.push(pdata._id)
-            localStorage.setItem('Cart', JSON.stringify(cartData))
-            alert('product add successfully')
+            // console.log(cartData)
+            let sortArr = cartData.slice().sort();
+            let Count = [];
+            for (let i = 0; i < sortArr.length - 1; i++) {
+                if (sortArr[i + 1] === sortArr[i]) {
+                    Count.push(sortArr[i]);
+                } else {
+                    Count.push(sortArr[i])
+                }
+            }
+            console.log(Count)
+            // localStorage.setItem('Cart', JSON.stringify(cartData))
+            // alert('product add successfully')
         }
-        console.log(cartData)
+        // console.log(cartData)
     }
 
     const masonryOptions = { transitionDuration: 0 }
     const imagesLoadedOptions = { background: '.my-bg-image-el' }
-    const imageGallery = database.map((v,i) => {
+    const imageGallery = database.map((v, i) => {
         return <CardStyle
             key={i}
             id={v._id}

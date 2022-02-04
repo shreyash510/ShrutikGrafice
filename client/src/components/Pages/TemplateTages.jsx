@@ -36,7 +36,7 @@ const BirthDay = () => {
     // const newArray = birthday.filter((v) => {
     //     return v.category === "Wedding Card"       
     // })
-    console.log(dbdata)
+    // console.log(dbdata)
     return (
         <>
             <div className="container">
