@@ -37,16 +37,16 @@ useEffect(() => {
                 setNavData(<div className="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul className="navbar-nav ms-auto pt-2">
                     <li className="nav-item">
-                        <Link to="/" style={{fontSize:'17px', fontWeight:'bold'}} className="nav-link px-3 active" aria-current="page">Home</Link>
+                        <Link to="/" style={{fontSize:'17px', fontWeight:'bold', fontFamily: 'sans-serif'}} className="nav-link px-3 active" aria-current="page">Home</Link>
                     </li>
                     <li className="nav-item">
-                        <Link to="/templates" style={{fontSize:'17px', fontWeight:'bold'}} className="nav-link px-3">Templates</Link>
+                        <Link to="/templates" style={{fontSize:'17px', fontWeight:'bold', fontFamily: 'sans-serif'}} className="nav-link px-3">Templates</Link>
                     </li>
                     <li className="nav-item">
-                        <Link to="/cart" style={{fontSize:'17px', fontWeight:'bold'}} className="nav-link px-3">Cart</Link>
+                        <Link to="/cart" style={{fontSize:'17px', fontWeight:'bold', fontFamily: 'sans-serif'}} className="nav-link px-3">Cart</Link>
                     </li>
                     <li className="nav-item dropdown">
-                    <Link style={{fontSize:'17px', fontWeight:'bold'}} className="nav-link dropdown-toggle" to="/" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <Link style={{fontSize:'17px', fontWeight:'bold', fontFamily: 'sans-serif'}} className="nav-link dropdown-toggle" to="/" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     Hello, {DBdata.data.firstname}
                     </Link>
                     <ul className="dropdown-menu" aria-labelledby="navbarDropdown">

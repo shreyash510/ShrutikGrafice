@@ -1,11 +1,12 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import Notification from './Notification';
 
 export default function HomeDemo() {
     const navigator = useNavigate()
     return (
         <>
-
+    {/* <Notification/> */}
             <div className="container my-5">
                 <div className="homedemo flex justify-around row g-3">
                     <div className="col-md-5 h-full flex self-center rounded">

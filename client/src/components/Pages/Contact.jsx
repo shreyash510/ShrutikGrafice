@@ -1,19 +1,31 @@
-import React from 'react'
-import { useState } from 'react'
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
 
-export default function Contact() {
+const Contact = () => {
     const [contact, setContact] = useState({});
-    const inputEvent = (e)=>{
-        setContact((preV)=>{
-            return{
+    const [userData, setUserData] = useState({});
+    const inputEvent = (e) => {
+        setContact((preV) => {
+            return {
                 ...preV,
-                [e.target.name]:e.target.value
+                [e.target.name]: e.target.value
             }
         })
     }
-    const btnClick = ()=>{
+    const btnClick = () => {
         console.log(contact)
+        axios.post('/contact', contact)
+            .then((res) => {
+                alert(res)
+            }).catch((e)=>{
+                console.log('error found')
+        })
     }
+    useEffect(() => {
+        axios.get('/contact')
+            .then(res => setUserData(res.data))
+            .catch(e => console.log(e))
+    }, [])
     return (
         <>
             <div className="container px-2 my-5">
@@ -27,19 +39,19 @@ export default function Contact() {
                         <form className="row g-3 shadow-sm rounded-3 p-2">
                             <div className="col-md-12">
                                 <label htmlFor="inputEmail4" className="form-label">Name</label>
-                                <input type="text" className="form-control" name='name' onChange={inputEvent} placeholder="Enter Name" />
+                                <input type="text" className="form-control" value={userData.firstname} placeholder="Enter Name" />
                             </div>
                             <div className="col-md-12">
                                 <label htmlFor="inputPassword4" className="form-label">Email</label>
-                                <input type="email" className="form-control" name='email' onChange={inputEvent} placeholder="Enter Email" />
+                                <input type="email" className="form-control" value={userData.email} placeholder="Enter Email" />
                             </div>
                             <div className="col-md-12">
                                 <label htmlFor="inputPassword4" className="form-label">Mobile No.</label>
-                                <input type="text" className="form-control" name='mobile' onChange={inputEvent} placeholder="Enter Mobile" />
+                                <input type="text" className="form-control" value={userData.phone} placeholder="Enter Mobile" />
                             </div>
                             <div className="col-md-12">
                                 <label htmlFor="inputPassword4" className="form-label">State</label>
-                                <input type="text" className="form-control" name='state' onChange={inputEvent} placeholder="Enter State" />
+                                <input type="text" className="form-control" value={userData.state} placeholder="Enter State" />
                             </div>
 
                         </form>
@@ -47,7 +59,7 @@ export default function Contact() {
                     <div className="col-md-4 ">
                         <div className="mb-3">
                             <label htmlFor="exampleFormControlInput1" className="form-label">Email address</label>
-                            <p className="form-control p-3 border">{contact.email}</p>
+                            <input type="email" className="form-control" name='email' onChange={inputEvent} placeholder="Enter email" />
                         </div>
                         <div className="mb-3">
                             <label htmlFor="exampleFormControlTextarea1" className="form-label">Example textarea</label>
@@ -59,7 +71,8 @@ export default function Contact() {
                     </div>
                 </div>
             </div>
-
         </>
     )
-}
+};
+
+export default Contact;

@@ -36,12 +36,15 @@ const Cart = () => {
     })
   }, [data])
 
-  const showContent = (id) => {
+
+  const delBtn = (id) => {
     setData((preV) => {
       return preV.filter((arrEle, index) => {
-        return index !== id;
+        return index !== id 
       })
     })
+    // localStorage.setItem('Cart', JSON.stringify(data))
+    alert('delete successfully')
   }
   return (
     <>
@@ -71,7 +74,7 @@ const Cart = () => {
                 title={v.title}
                 price={v.DiscountPrice}
                 img={v.image}
-                delete={() => showContent(i)}
+                delete={() => delBtn(i)}
               />
             })
 

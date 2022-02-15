@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const UserData = require('../model/userSchema');
 const AdminData = require('../model/adminSchema');
+const ContactData = require('../model/contactSchema');
 const cors = require('cors')
 const bcrypt = require('bcryptjs')
 router.use(express.urlencoded({ extended: true }));
@@ -13,7 +14,7 @@ const jwt = require('jsonwebtoken');
 const cookieParser = require('cookie-parser')
 router.use(cookieParser());
 
-const authentification = require("../middleware/authentification")
+const authentification = require("../middleware/authentification");
 
 router.get('/', (req, res) => {
     res.send("this is router home page");
@@ -189,6 +190,27 @@ router.post('/create-product', async (req, res) => {
 router.get('/about', authentification, (req, res)=>{
     // res.json('hello this is about page')
     res.send(req.rootUser)
+})
+
+router.get('/contact', authentification, (req, res)=>{
+    // res.json('hello this is about page')
+    res.send(req.rootUser)
+})
+
+router.post('/contact', (req, res)=>{    
+    const {email, msg} = req.body;
+    console.log(email,msg)
+    const contact = ContactData({email, msg})
+    if(contact){
+        contact.save().then(
+        res.json({
+            message : 'Feedback send successfully'
+        })
+    )}else{
+        res.json({
+            error : 'server Failed'
+        })
+    }
 })
 
 router.get('/view', authentification, (req, res)=>{
